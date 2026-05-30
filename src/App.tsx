@@ -1,8 +1,20 @@
+import { QueryProvider } from "@providers/QueryProvider";
+import { ToasterProvider } from "@providers/ToasterProvider";
+import { Suspense } from "react";
+import {BrowserRouter , Routes , Route} from 'react-router-dom';
+
 function App() {
   return (
-    <div>
-      
-    </div>
+    <QueryProvider>
+      <BrowserRouter>
+        <ToasterProvider/>
+        <Suspense fallback={<div>Loading ...</div>}>
+          <Routes>
+            <Route/>
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </QueryProvider>
   );
 }
 
