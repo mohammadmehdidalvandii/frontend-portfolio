@@ -1,24 +1,27 @@
 import { QueryProvider } from "./providers/QueryProvider";
 import { ToasterProvider } from "./providers/ToasterProvider";
+import { HelmetProvider } from "react-helmet-async";
 import { MainLayout } from "@layouts/MainLayout";
 import { Suspense } from "react";
-import {BrowserRouter , Routes , Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <QueryProvider>
-      <BrowserRouter>
-        <ToasterProvider/>
-        <Suspense fallback={<div>Loading ...</div>}>
-          <Routes>
+    <HelmetProvider>
+      <QueryProvider>
+        <BrowserRouter>
+          <ToasterProvider />
+          <Suspense fallback={<div>Loading ...</div>}>
+            <Routes>
               {/* Main page */}
-              <Route path="/" element={<MainLayout/>}>
+              <Route path="/" element={<MainLayout />}>
                 this is main page
               </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </QueryProvider>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </QueryProvider>
+    </HelmetProvider>
   );
 }
 
