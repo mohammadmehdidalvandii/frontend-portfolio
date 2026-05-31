@@ -2,8 +2,10 @@ import { QueryProvider } from "./providers/QueryProvider";
 import { ToasterProvider } from "./providers/ToasterProvider";
 import { HelmetProvider } from "react-helmet-async";
 import { MainLayout } from "@layouts/MainLayout";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const Index = lazy(()=>import('@pages/index'));
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
             <Routes>
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
-                this is main page
+                <Route index element={<Index/>}/>
               </Route>
             </Routes>
           </Suspense>
