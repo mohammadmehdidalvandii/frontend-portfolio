@@ -5,7 +5,8 @@ import { MainLayout } from "@layouts/MainLayout";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Index = lazy(()=>import('@pages/Index'));
+const Index = lazy(()=>import('@pages/Index/Index'));
+const Projects = lazy(()=>import('@pages/Projects/Projects'))
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<Index/>}/>
+                <Route path="Projects" element={<Projects/>}/>
               </Route>
             </Routes>
           </Suspense>
