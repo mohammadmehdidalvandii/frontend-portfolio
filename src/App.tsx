@@ -5,7 +5,7 @@ import { MainLayout } from "@layouts/MainLayout";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Index = lazy(()=>import('@pages/index'));
+const Index = lazy(()=>import('@pages/Index'));
 
 function App() {
   return (
