@@ -1,4 +1,5 @@
 import Hero from '@components/templates/index/Hero/Hero'
+import ProjectHome from '@components/templates/index/ProjectHome/ProjectHome'
 import { Helmet } from 'react-helmet-async'
 
 function index() {
@@ -11,6 +12,7 @@ function index() {
         <div className='px-6 max-w-screen-2xl mx-auto my-16'>
           {/* Hero */}
             <Hero/>
+            <ProjectHome/>
         </div>
     </>
   )
