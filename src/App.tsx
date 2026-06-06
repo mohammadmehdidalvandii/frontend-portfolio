@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const Index = lazy(()=>import('@pages/Index/Index'));
 const Projects = lazy(()=>import('@pages/Projects/Projects'))
 const ProjectSingle = lazy(()=>import('@pages/Projects/ProjectSingle'));
+const Certificates = lazy(()=>import('@pages/Certificates/Certificates'));
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                 <Route index element={<Index/>}/>
                 <Route path="Projects" element={<Projects/>}/>
                 <Route path="Projects/:id" element={<ProjectSingle/>}/>
+                <Route path="Certificate" element={<Certificates/>}/>
               </Route>
             </Routes>
           </Suspense>
