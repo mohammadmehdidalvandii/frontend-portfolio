@@ -1,5 +1,6 @@
 import Description from "@components/templates/about/Description/Description"
 import Stack from "@components/templates/about/Stack/Stack"
+import Timeline from "@components/templates/about/Timeline/Timeline"
 import { Helmet } from "react-helmet-async"
 
 
@@ -17,6 +18,7 @@ function About() {
             </h1>
             <Description/>
             <Stack/>
+            <Timeline/>
        </div>
    </>
   )
