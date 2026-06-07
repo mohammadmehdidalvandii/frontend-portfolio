@@ -1,4 +1,5 @@
 import Content from "@components/templates/contact/Content/Content"
+import FormContact from "@components/templates/contact/FormContact/FormContact"
 import { Helmet } from "react-helmet-async"
 
 function Contact() {
@@ -15,7 +16,9 @@ function Contact() {
             <div className="lg:col-span-5 space-y-8">
                 <Content/>
             </div>
-            <div className="lg:col-span-7 space-y-6"></div>
+            <div className="lg:col-span-7 space-y-6">
+                <FormContact/>
+            </div>
         </div>
     </div>
 </>
