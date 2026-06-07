@@ -1,3 +1,4 @@
+import Description from "@components/templates/about/Description/Description"
 import { Helmet } from "react-helmet-async"
 
 
@@ -13,6 +14,7 @@ function About() {
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-12 max-w-4xl">
                  ENGINEER · BUILDER · OPERATO
             </h1>
+            <Description/>
        </div>
    </>
   )
