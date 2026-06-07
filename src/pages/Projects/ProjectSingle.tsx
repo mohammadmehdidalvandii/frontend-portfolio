@@ -1,4 +1,4 @@
-import ProjectDetails from "@components/templates/index/ProjectSingle/ProjectDetails"
+import ProjectDetails from "@components/templates/ProjectSingle/ProjectDetails"
 import { Helmet } from "react-helmet-async"
 
 
