@@ -23,7 +23,7 @@ function App() {
                 <Route index element={<Index/>}/>
                 <Route path="Projects" element={<Projects/>}/>
                 <Route path="Projects/:id" element={<ProjectSingle/>}/>
-                <Route path="Certificate" element={<Certificates/>}/>
+                <Route path="Certificates" element={<Certificates/>}/>
               </Route>
             </Routes>
           </Suspense>
