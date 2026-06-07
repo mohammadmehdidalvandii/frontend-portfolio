@@ -5,11 +5,13 @@ import { MainLayout } from "@layouts/MainLayout";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
 const Index = lazy(()=>import('@pages/Index/Index'));
 const Projects = lazy(()=>import('@pages/Projects/Projects'))
 const ProjectSingle = lazy(()=>import('@pages/Projects/ProjectSingle'));
 const Certificates = lazy(()=>import('@pages/Certificates/Certificates'));
 const About  = lazy(()=>import('@pages/About/About'));
+const Contact = lazy(()=>import('@pages/Contact/Contact'));
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
                 <Route path="Projects/:id" element={<ProjectSingle/>}/>
                 <Route path="Certificates" element={<Certificates/>}/>
                 <Route path="About" element={<About/>}/>
+                <Route path="Contact" element={<Contact/>}/>
               </Route>
             </Routes>
           </Suspense>
