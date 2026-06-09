@@ -1,5 +1,6 @@
 import CertificateManager from "@components/templates/admin/CertificateManager/CertificateManager"
 import ProjectManger from "@components/templates/admin/ProjectManger/ProjectManger"
+import TimelineManager from "@components/templates/admin/TimelineManager/TimelineManager"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/UI/Tabs"
 import { Helmet } from "react-helmet-async"
 
@@ -35,7 +36,9 @@ function Admin() {
                     <TabsContent value="Certificate">
                         <CertificateManager/>
                     </TabsContent>
-                    <TabsContent value="Timeline">this is TimeLine</TabsContent>
+                    <TabsContent value="Timeline">
+                        <TimelineManager/>
+                    </TabsContent>
                     <TabsContent value="Messages">this is Messages</TabsContent>
                 </div>
             </Tabs>
