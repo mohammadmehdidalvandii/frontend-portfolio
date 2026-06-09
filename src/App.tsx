@@ -12,6 +12,7 @@ const ProjectSingle = lazy(()=>import('@pages/Projects/ProjectSingle'));
 const Certificates = lazy(()=>import('@pages/Certificates/Certificates'));
 const About  = lazy(()=>import('@pages/About/About'));
 const Contact = lazy(()=>import('@pages/Contact/Contact'));
+const Admin = lazy(()=>import('@pages/Admin/Admin'));
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="Certificates" element={<Certificates/>}/>
                 <Route path="About" element={<About/>}/>
                 <Route path="Contact" element={<Contact/>}/>
+                <Route path="Admin" element={<Admin/>}/>
               </Route>
             </Routes>
           </Suspense>
