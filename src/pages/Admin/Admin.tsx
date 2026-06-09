@@ -1,3 +1,4 @@
+import ProjectManger from "@components/templates/admin/ProjectManger/ProjectManger"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/UI/Tabs"
 import { Helmet } from "react-helmet-async"
 
@@ -27,7 +28,9 @@ function Admin() {
                     </TabsList>
                 </div>
                 <div className="border border-input p-6 md:p-8">
-                    <TabsContent value="Projects">this is Project</TabsContent>
+                    <TabsContent value="Projects">
+                        <ProjectManger/>
+                    </TabsContent>
                     <TabsContent value="Certificate">this is Certificate</TabsContent>
                     <TabsContent value="Timeline">this is TimeLine</TabsContent>
                     <TabsContent value="Messages">this is Messages</TabsContent>
