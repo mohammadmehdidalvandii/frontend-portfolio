@@ -1,3 +1,4 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/UI/Tabs"
 import { Helmet } from "react-helmet-async"
 
 
@@ -16,6 +17,22 @@ function Admin() {
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-12">
                 Admin Panel
             </h1>
+            <Tabs defaultValue="Projects" className="w-full">
+                <div className="flex flex-wrap items-center gap-3 mb-6">
+                    <TabsList className="h-auto bg-transparent p-0 gap-px rounded-none border border-input">
+                        <TabsTrigger value="Projects" className="rounded-none px-5 py-2 font-mono text-[14px] text-foreground uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-none">Projects</TabsTrigger>
+                        <TabsTrigger value="Certificate" className="rounded-none px-5 py-2 font-mono text-[14px] text-foreground uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-none">Certificate</TabsTrigger>
+                        <TabsTrigger value="Timeline" className="rounded-none px-5 py-2 font-mono text-[14px] text-foreground uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-none">Timeline</TabsTrigger>
+                        <TabsTrigger value="Messages" className="rounded-none px-5 py-2 font-mono text-[14px] text-foreground uppercase tracking-widest data-[state=active]:bg-primary data-[state=active]:text-secondary data-[state=active]:shadow-none">Messages</TabsTrigger>
+                    </TabsList>
+                </div>
+                <div className="border border-input p-6 md:p-8">
+                    <TabsContent value="Projects">this is Project</TabsContent>
+                    <TabsContent value="Certificate">this is Certificate</TabsContent>
+                    <TabsContent value="Timeline">this is TimeLine</TabsContent>
+                    <TabsContent value="Messages">this is Messages</TabsContent>
+                </div>
+            </Tabs>
         </div>
     </>
   )

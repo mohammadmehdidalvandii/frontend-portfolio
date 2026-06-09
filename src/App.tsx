@@ -34,7 +34,7 @@ function App() {
               </Route>
               {/* Admin Layout */}
               <Route path="/Admin" element={<AdminLayout/>}>
-                <Route path="Admin" element={<Admin/>}/>
+                <Route index element={<Admin/>}/>
               </Route>
             </Routes>
           </Suspense>
