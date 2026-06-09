@@ -1,3 +1,4 @@
+import CertificateManager from "@components/templates/admin/CertificateManager/CertificateManager"
 import ProjectManger from "@components/templates/admin/ProjectManger/ProjectManger"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/UI/Tabs"
 import { Helmet } from "react-helmet-async"
@@ -31,7 +32,9 @@ function Admin() {
                     <TabsContent value="Projects">
                         <ProjectManger/>
                     </TabsContent>
-                    <TabsContent value="Certificate">this is Certificate</TabsContent>
+                    <TabsContent value="Certificate">
+                        <CertificateManager/>
+                    </TabsContent>
                     <TabsContent value="Timeline">this is TimeLine</TabsContent>
                     <TabsContent value="Messages">this is Messages</TabsContent>
                 </div>
