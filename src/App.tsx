@@ -4,6 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { MainLayout } from "@layouts/MainLayout";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AdminLayout from "@layouts/AdminLayout";
 
 
 const Index = lazy(()=>import('@pages/Index/Index'));
@@ -30,6 +31,9 @@ function App() {
                 <Route path="Certificates" element={<Certificates/>}/>
                 <Route path="About" element={<About/>}/>
                 <Route path="Contact" element={<Contact/>}/>
+              </Route>
+              {/* Admin Layout */}
+              <Route path="/Admin" element={<AdminLayout/>}>
                 <Route path="Admin" element={<Admin/>}/>
               </Route>
             </Routes>
