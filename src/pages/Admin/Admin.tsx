@@ -1,4 +1,5 @@
 import CertificateManager from "@components/templates/admin/CertificateManager/CertificateManager"
+import MessagesManager from "@components/templates/admin/MessagesManager/MessagesManager"
 import ProjectManger from "@components/templates/admin/ProjectManger/ProjectManger"
 import TimelineManager from "@components/templates/admin/TimelineManager/TimelineManager"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/UI/Tabs"
@@ -39,7 +40,9 @@ function Admin() {
                     <TabsContent value="Timeline">
                         <TimelineManager/>
                     </TabsContent>
-                    <TabsContent value="Messages">this is Messages</TabsContent>
+                    <TabsContent value="Messages">
+                        <MessagesManager/>
+                    </TabsContent>
                 </div>
             </Tabs>
         </div>
