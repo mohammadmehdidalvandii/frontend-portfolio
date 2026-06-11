@@ -1,3 +1,6 @@
+import { lazy } from "react"
+
+const AddTimelineModel = lazy(()=>import('@models/AddTimelineModel'));
 
 function TimelineManager() {
   return (
@@ -6,9 +9,7 @@ function TimelineManager() {
                     <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
             Manage Timeline
         </h2>
-        <button className="px-4 py-2 bg-foreground text-secondary font-mono text-[12px] uppercase tracking-widest hover:bg-primary transition-colors">
-            + New Entry
-        </button>
+    <AddTimelineModel/>
         </div>
         <div className="divide-y divide-input border-y border-input">
             <div className="grid grid-cols-12 gap-4 py-4 items-center">
