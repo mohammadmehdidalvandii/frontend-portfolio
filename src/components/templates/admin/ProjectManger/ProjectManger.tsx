@@ -1,13 +1,13 @@
+import { lazy } from "react"
 
+const AddProjectModel = lazy(()=>import('@models/AddProjectModel'));
 
 function ProjectManger() {
   return (
     <div>
         <div className="flex justify-between items-center mb-6">
             <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Mange Projects</h2>
-            <button className="px-4 py-2 bg-foreground text-bg font-mono text-[12px] uppercase tracking-widest hover:bg-primary transition-colors cursor-pointer">
-                + New Project
-            </button>
+        <AddProjectModel/>
         </div>
         <div className="divide-y divide-input border-y border-input">
             <div className="grid grid-cols-12 gap-4 py-4 items-center">
