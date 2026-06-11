@@ -1,7 +1,7 @@
 import { lazy } from "react"
 
 const AddTimelineModel = lazy(()=>import('@models/AddTimelineModel'));
-
+const EditTimelineModel = lazy(()=>import('@models/EditTimelineModel'));
 function TimelineManager() {
   return (
     <div>
@@ -18,7 +18,7 @@ function TimelineManager() {
                 <span className="col-span-4 text-xs text-foreground">
 Building distributed systems and edge-first products for clients across fintech and devtools.</span>
                 <span className="col-span-2 flex justify-end gap-2">
-                                        <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Edit</button>
+                    <EditTimelineModel/>
                     <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
                 </span>
             </div>
