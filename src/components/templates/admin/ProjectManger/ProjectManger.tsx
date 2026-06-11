@@ -1,6 +1,7 @@
 import { lazy } from "react"
 
 const AddProjectModel = lazy(()=>import('@models/AddProjectModel'));
+const EditProjectModel = lazy(()=>import('@models/EditProjectModel'));
 
 function ProjectManger() {
   return (
@@ -17,7 +18,7 @@ function ProjectManger() {
                 <span className="col-span-3 font-mono text-[14px] text-primary">PROJECT_ALPHA</span>
                 <span className="col-span-3 text-lg font-medium">Quantum Ledger</span>
                 <div className="col-span-4 flex justify-end gap-2">
-                    <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Edit</button>
+                    <EditProjectModel/>
                     <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
                 </div>
                 </div>
