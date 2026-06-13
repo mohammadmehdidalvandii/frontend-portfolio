@@ -15,6 +15,7 @@ const About  = lazy(()=>import('@pages/About/About'));
 const Contact = lazy(()=>import('@pages/Contact/Contact'));
 const Admin = lazy(()=>import('@pages/Admin/Admin'));
 const Login = lazy(()=>import('@pages/Login/Login'));
+const NotFound = lazy(()=>import('@pages/NotFound/NotFound'));
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <ToasterProvider />
           <Suspense fallback={<div>Loading ...</div>}>
             <Routes>
+              {/* All route */}
+              <Route path="*" element={<NotFound/>} />
               <Route path="/Login" element={<Login/>}/>
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
