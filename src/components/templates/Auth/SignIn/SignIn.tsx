@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Formik } from "formik";
 import { LoginDTO } from "../../../../types/auth";
 import { useLogin } from "@services/auth..services";
+import { showError, showSuccess } from "@utils/Toasts";
 
 function SignIn() {
   const [showPwd, setShowPwd] = useState(false);
@@ -26,10 +27,10 @@ function SignIn() {
           onSubmit={(values: LoginDTO) => {
             login.mutate(values ,{
                 onSuccess:()=>{
-                    console.log("Login successfully")
+                    showSuccess('Login successfully')
                 },
                 onError:(error)=>{
-                    console.log(error.message)
+                    showError(error.message)
                 }
             })
           }}
