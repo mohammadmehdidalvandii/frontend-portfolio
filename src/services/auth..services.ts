@@ -1,5 +1,5 @@
 import {useMutation}  from '@tanstack/react-query';
-import { privateApi, publicApi } from '../config/api';
+import { privateApi } from '../config/api';
 import { LoginDTO } from '../types/auth';
 
 export const useLogin = ()=>{
