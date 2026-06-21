@@ -1,11 +1,12 @@
 import {useMutation}  from '@tanstack/react-query';
-import { privateApi } from '../config/api';
+import { privateApi, publicApi } from '../config/api';
 import { LoginDTO } from '../types/auth';
 
-export const Login = ()=>{
+export const useLogin = ()=>{
     return useMutation({
         mutationFn: async (values:LoginDTO)=>{
-            const res  = await privateApi.post('/login' , values ,{
+            console.log("values" , values)
+            const res  = await privateApi.post('/user/login' , values ,{
                 headers:{'Content-Type':'application/json'},
             });
             return res.data
