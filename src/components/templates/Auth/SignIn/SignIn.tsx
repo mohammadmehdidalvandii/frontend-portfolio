@@ -9,7 +9,7 @@ function SignIn() {
   const login = useLogin();
   return (
     <div className="min-h-screen pt-24 pb-32 flex items-center justify-center">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-87.5 md:max-w-md">
         <div className="flex items-center gap-3 text-primary font-mono text-lg mb-6">
           <span className="animate-pulse">●</span>
           <span className="uppercase tracking-[0.3em]">
@@ -24,10 +24,12 @@ function SignIn() {
         </p>
         <Formik<LoginDTO>
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values: LoginDTO) => {
+          onSubmit={(values: LoginDTO ,{resetForm}) => {
             login.mutate(values ,{
                 onSuccess:()=>{
-                    showSuccess('Login successfully')
+                    resetForm()
+                    showSuccess('Login successfully');
+                    window.open('/Admin' , '_blank')
                 },
                 onError:(error)=>{
                     showError(error.message)
