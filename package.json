@@ -27,7 +27,8 @@
     "react-router-dom": "^7.16.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
