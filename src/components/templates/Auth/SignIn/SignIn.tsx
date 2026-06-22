@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { LoginDTO } from "../../../../types/auth";
 import { useLogin } from "@services/auth..services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { validationLoginSchema } from "../../../../validations/login.validation";
 
 function SignIn() {
   const [showPwd, setShowPwd] = useState(false);
@@ -24,20 +25,21 @@ function SignIn() {
         </p>
         <Formik<LoginDTO>
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values: LoginDTO ,{resetForm}) => {
-            login.mutate(values ,{
-                onSuccess:()=>{
-                    resetForm()
-                    showSuccess('Login successfully');
-                    window.open('/Admin' , '_blank')
-                },
-                onError:(error)=>{
-                    showError(error.message)
-                }
-            })
+          validationSchema={validationLoginSchema}
+          onSubmit={(values: LoginDTO, { resetForm }) => {
+            login.mutate(values, {
+              onSuccess: () => {
+                resetForm();
+                showSuccess("Login successfully");
+                window.open("/Admin", "_blank");
+              },
+              onError: (error) => {
+                showError( error.message || 'Something went wrong');
+              },
+            });
           }}
         >
-          {({ handleSubmit, handleChange, values }) => (
+          {({ handleSubmit, handleChange, values, errors, touched }) => (
             <form
               onSubmit={handleSubmit}
               className="border border-input divide-y divide-input"
@@ -60,6 +62,11 @@ function SignIn() {
                     onChange={handleChange}
                   />
                 </div>
+                {touched.email && errors.email && (
+                  <p className="font-mono text-[12px] text-red-500">
+                    {errors.email}
+                  </p>
+                )}
               </div>
               <div className="p-4">
                 <label
@@ -86,6 +93,11 @@ function SignIn() {
                     {showPwd ? "hide" : "show"}
                   </button>
                 </div>
+                {touched.password && errors.password && (
+                  <p className="font-mono text-[12px] text-red-500">
+                    {errors.password}
+                  </p>
+                )}
               </div>
               <button
                 type="submit"
