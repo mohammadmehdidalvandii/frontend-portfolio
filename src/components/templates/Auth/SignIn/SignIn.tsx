@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Formik } from "formik";
 import { LoginDTO } from "../../../../types/auth";
-import { useLogin } from "@services/auth..services";
+import { useLogin } from "@services/auth.services";
 import { showError, showSuccess } from "@utils/Toasts";
 import { validationLoginSchema } from "../../../../validations/login.validation";
 
