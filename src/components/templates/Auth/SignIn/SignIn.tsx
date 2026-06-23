@@ -4,8 +4,9 @@ import { LoginDTO } from "../../../../types/auth";
 import { useLogin } from "@services/auth.services";
 import { showError, showSuccess } from "@utils/Toasts";
 import { validationLoginSchema } from "../../../../validations/login.validation";
-
+import { useNavigate } from "react-router-dom";
 function SignIn() {
+  const navigate = useNavigate();
   const [showPwd, setShowPwd] = useState(false);
   const login = useLogin();
   return (
@@ -28,10 +29,11 @@ function SignIn() {
           validationSchema={validationLoginSchema}
           onSubmit={(values: LoginDTO, { resetForm }) => {
             login.mutate(values, {
-              onSuccess: () => {
+              onSuccess: (data) => {
+                localStorage.setItem('token' , data)
                 resetForm();
                 showSuccess("Login successfully");
-                window.open("/Admin", "_blank");
+                navigate('/Admin')
               },
               onError: (error) => {
                 showError( error.message || 'Something went wrong');

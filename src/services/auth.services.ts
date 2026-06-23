@@ -5,11 +5,10 @@ import { LoginDTO } from '../types/auth';
 export const useLogin = ()=>{
     return useMutation({
         mutationFn: async (values:LoginDTO)=>{
-            console.log("values" , values)
             const res  = await privateApi.post('/user/login' , values ,{
                 headers:{'Content-Type':'application/json'},
             });
-            return res.data
+            return res.data.data
         }
     })
 }
