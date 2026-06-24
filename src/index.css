@@ -57,3 +57,17 @@
     }
 }
 /* *** Layer Base **** */
+/* *** Layer components **** */
+.swal-popup{
+    @apply bg-bg border border-input 
+}
+.swal-title{
+    @apply font-monoBold text-white 
+}
+.swal-confirm{
+    @apply font-mono bg-primary duration-300 ease-linear hover:bg-bg hover:text-primary border border-primary
+}
+.swal-cancel{
+    @apply bg-bg border font-mono duration-300 ease-linear hover:border-destructive hover:text-destructive hover:bg-bg
+}
+/* *** Layer components **** */
