@@ -65,7 +65,6 @@ const EditProjectModel: React.FC<ProjectData> = ({ project }) => {
                 },
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onError:(error:any)=>{
-                    console.log("error =>", error.response?.data.error.message)
                     showError(error.response?.data.error.message || 'Something is wrong')
                 }
             })

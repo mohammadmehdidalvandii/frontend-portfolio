@@ -15,7 +15,7 @@ export const useGetAllProject = ()=>{
 
 export const useGetProjectById = (id:string) =>{
     return useQuery({
-        queryKey:['project', id],
+        queryKey:['projects', id],
         queryFn:async ()=>{
             const res = await publicApi.get(`/projects/${id}`);
             return res.data?.data;
@@ -48,7 +48,20 @@ export const useUpdatedProject = ()=>{
             return res.data?.data
         },
         onSuccess:()=>{
-            queryClient.invalidateQueries({queryKey:['project']})
+            queryClient.invalidateQueries({queryKey:['projects']})
+        }
+    })
+}
+
+export const useDeleteProject = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (id:string) =>{
+            const res = await privateApi.delete(`/projects/${id}`);
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['projects']})
         }
     })
 }
