@@ -56,7 +56,6 @@ function AddProjectModel() {
             formData.append("shortDescription", values.shortDescription);
             formData.append("longDescription", values.longDescription);
             formData.append("image", values.image!);
-            console.log(values)
             createProject.mutate(formData ,{
                 onSuccess:()=>{
                     showSuccess('Created Project successfully');

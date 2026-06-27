@@ -1,5 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query';
 import { privateApi, publicApi } from '../config/api';
+import { ProjectDTO } from '../types/project';
 
 
 export const useGetAllProject = ()=>{
@@ -33,6 +34,21 @@ export const useCreatedProject = ()=>{
         },
         onSuccess:()=>{
             queryClient.invalidateQueries({queryKey:['projects']})
+        }
+    })
+}
+
+export const useUpdatedProject = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async ({id , values}:{id:string , values:Partial<ProjectDTO>})=>{
+            const res =  await privateApi.patch(`/projects/${id}`, values , {
+                headers:{'Content-Type':'multipart/form-data'},
+            });
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['project']})
         }
     })
 }
