@@ -5,7 +5,6 @@ import { TimelineDTO } from "../../../../types/timelines";
 const Timeline: React.FC = () => {
   const { data:Timelines, isError, isLoading } = useGetAllTimelines();
 
-  console.log("timeline =>" , Timelines?.length)
 
   if (isLoading)
     return <p className="font-mono text-center text-primary">// loading...</p>;
