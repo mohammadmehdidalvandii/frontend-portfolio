@@ -40,7 +40,9 @@ function CertificateManager() {
             {certificate.year}
           </span>
           <div className="col-span-2 flex justify-end gap-2">
-            <EditCredentialModel />
+            <EditCredentialModel   
+              certificate={certificate}
+            />
             <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">
               Delete
             </button>
