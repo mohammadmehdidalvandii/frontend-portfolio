@@ -1,9 +1,14 @@
+import { useGetAllCertificate } from "@services/certificate.services";
 import { lazy } from "react";
+import { CertificateDTO } from "../../../../types/certificate";
 
 const AddCredentialModel = lazy(() => import("@models/AddCredentialModel"));
 const EditCredentialModel = lazy(() => import("@models/EditCredentialModel"));
 
 function CertificateManager() {
+  const {data:Certificates , isError , isLoading} = useGetAllCertificate();
+  if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
+  if (isError) return <p className="font-mono text-center text-primary">// error fetching certificates</p>;
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -13,22 +18,26 @@ function CertificateManager() {
         <AddCredentialModel />
       </div>
       <div className="divide-y divide-input border-y border-input">
-        <div className="grid grid-cols-12 gap-4 py-4 items-center">
+        {Certificates.length === 0 ? (
+          <p className="font-mono text-center text-primary">There is no certificate.</p>
+        ):(
+          Certificates.map((certificate:CertificateDTO)=>(
+        <div className="grid grid-cols-12 gap-4 py-4 items-center" key={certificate._id}>
           <div className="col-span-2 aspect-video bg-secondary/60 border border-input overflow-hidden">
             <img
-              src="/assets/images/certi.jpg"
+              src={certificate.image}
               alt="cer"
               className="w-full h-full object-cover"
             />
           </div>
           <span className="col-span-5 text-lg font-medium">
-            AWS Certified Solutions Architect
+            {certificate.title}
           </span>
           <span className="col-span-2 text-lg text-foreground">
-            Amazon Web Services
+           {certificate.issuer}
           </span>
           <span className="col-span-1 font-mono text-[12px] text-primary">
-            2024
+            {certificate.year}
           </span>
           <div className="col-span-2 flex justify-end gap-2">
             <EditCredentialModel />
@@ -37,6 +46,8 @@ function CertificateManager() {
             </button>
           </div>
         </div>
+          ))
+        )}
       </div>
     </div>
   );
