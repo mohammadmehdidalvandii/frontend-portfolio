@@ -40,4 +40,17 @@ export const useUpdateCertificate = () => {
             queryClient.invalidateQueries({ queryKey: ['certificates'] })
         }
     })
+};
+
+export const useDeleteCertificate = ()=>{
+    const queryClient =  useQueryClient();
+    return useMutation({
+        mutationFn: async (id:string)=>{
+            const res = await privateApi.delete(`/certificate/${id}`);
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['certificates']});
+        }
+    })
 }

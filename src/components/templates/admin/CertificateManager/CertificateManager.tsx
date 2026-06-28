@@ -1,14 +1,32 @@
-import { useGetAllCertificate } from "@services/certificate.services";
+import { useDeleteCertificate, useGetAllCertificate } from "@services/certificate.services";
 import { lazy } from "react";
 import { CertificateDTO } from "../../../../types/certificate";
+import { showConfirm } from "@utils/confirm";
+import { showError, showSuccess } from "@utils/Toasts";
 
 const AddCredentialModel = lazy(() => import("@models/AddCredentialModel"));
 const EditCredentialModel = lazy(() => import("@models/EditCredentialModel"));
 
 function CertificateManager() {
   const {data:Certificates , isError , isLoading} = useGetAllCertificate();
+  const deleteCertificate = useDeleteCertificate();
   if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
   if (isError) return <p className="font-mono text-center text-primary">// error fetching certificates</p>;
+
+  const handleDeleteProject = async (certificateId:string)=>{
+    const result = await showConfirm('Are you sure want to delete the certificate ?')
+    if(result.isConfirmed){
+      deleteCertificate.mutate(certificateId , {
+        onSuccess:()=>{
+          showSuccess('Certificate deleted successfully')
+        },
+        onError:(error:any)=>{
+          showError(error.response?.data.error.message || 'Something is wrong')
+        }
+      })
+    }
+  }
+
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -43,7 +61,9 @@ function CertificateManager() {
             <EditCredentialModel   
               certificate={certificate}
             />
-            <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">
+            <button
+              onClick={()=>handleDeleteProject(certificate._id!)}
+            className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">
               Delete
             </button>
           </div>
