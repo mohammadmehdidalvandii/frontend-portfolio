@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useGetAllMessage, useUpdateMessage,  } from "@services/contact.services";
+import { useDeleteMessage, useGetAllMessage, useUpdateMessage,  } from "@services/contact.services";
 import { MessageDTO } from "../../../../types/message";
+import { showConfirm } from "@utils/confirm";
+import { showError, showSuccess } from "@utils/Toasts";
 
 const MessagesManager: React.FC = () => {
     const { data: Messages, isLoading, isError } = useGetAllMessage();
     const updateMessage = useUpdateMessage();
+    const deleteMessage = useDeleteMessage();
     const [selected, setSelected] = useState<MessageDTO | null>(null);
 
     if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
@@ -12,6 +15,21 @@ const MessagesManager: React.FC = () => {
 
     const handlerUpdateMessage = (messageId:string) =>{
         updateMessage.mutate({ id: messageId, values: { isRead: true } });
+    }
+
+    const handleDeleteMessage = async (messageId:string) =>{
+        const result = await  showConfirm('Are you sure you want to delete the project?');
+        if(result.isConfirmed){
+          deleteMessage.mutate(messageId ,{
+              onSuccess:()=>{
+                showSuccess('Project deleted successfully')
+              },
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              onError:(error:any)=>{
+                  showError(error.response?.data.error.message || 'Something is wrong')
+              }
+          })
+        }
     }
 
         return (
@@ -62,6 +80,7 @@ const MessagesManager: React.FC = () => {
                                     read
                                 </button>
                                 <button
+                                    onClick={()=>handleDeleteMessage(message._id!)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-destructive cursor-pointer transition-colors">
                                     delete
                                 </button>

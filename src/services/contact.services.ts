@@ -42,5 +42,21 @@ export const useUpdateMessage = ()=>{
             queryClient.invalidateQueries({queryKey:['messages']})
         }
     })
+};
+
+export const useDeleteMessage = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (id:string) =>{
+            const res =  await privateApi.delete(`/message/${id}`,{
+                headers:{'Content-Type':'application/json'}
+            });
+            
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['messages']})
+        }
+    })
 }
 
