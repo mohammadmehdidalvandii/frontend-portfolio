@@ -28,4 +28,19 @@ export const useSendMessage = ()=>{
     })
 };
 
+export const useUpdateMessage = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async ({id , values}:{id:string , values:Partial<MessageDTO>}) =>{
+            const res = await privateApi.patch(`/message/${id}`, values ,{
+                headers:{'Content-Type':'application/json'}
+            });
+
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['messages']})
+        }
+    })
+}
 

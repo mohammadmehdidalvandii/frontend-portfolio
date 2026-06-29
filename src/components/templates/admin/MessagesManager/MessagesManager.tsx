@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { useGetAllMessage,  } from "@services/contact.services";
+import { useGetAllMessage, useUpdateMessage,  } from "@services/contact.services";
 import { MessageDTO } from "../../../../types/message";
 
 const MessagesManager: React.FC = () => {
     const { data: Messages, isLoading, isError } = useGetAllMessage();
+    const updateMessage = useUpdateMessage();
     const [selected, setSelected] = useState<MessageDTO | null>(null);
 
     if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
     if (isError) return <p className="font-mono text-center text-primary">// error fetching messages</p>;
 
+    const handlerUpdateMessage = (messageId:string) =>{
+        updateMessage.mutate({ id: messageId, values: { isRead: true } });
+    }
 
-    return (
+        return (
         <div>            
             <div className="flex justify-between items-center mb-6">
                 <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
@@ -28,7 +32,7 @@ const MessagesManager: React.FC = () => {
                 <div className="divide-y divide-input border-y border-input">
                     {Messages.map((message: MessageDTO) => (
                         <div key={message._id}
-                            className={`grid grid-cols-12 gap-4 py-4 px-2 items-center transition-colors ${!message.isRead ? 'bg-primary/5' : ''}`}>
+                            className={`grid grid-cols-12 gap-4 py-4 px-2 items-center transition-colors ${!message.isRead ? 'bg-primary/5 ' : ''}`}>
 
                             <div className="col-span-1 flex justify-center">
                                 {!message.isRead ? (
@@ -37,13 +41,13 @@ const MessagesManager: React.FC = () => {
                                     <span className="w-2 h-2 rounded-full bg-input" />
                                 )}
                             </div>
-                            <span className={`col-span-2 text-xs truncate ${!message.isRead ? 'font-bold text-foreground' : 'text-accent'}`}>
+                            <span className={`col-span-2 text-xs truncate ${!message.isRead ? 'font-bold text-foreground' : 'text-accent line-through'}`}>
                                 {message.name}
                             </span>
                             <span className="col-span-3 font-mono text-[11px] text-accent truncate">
                                 {message.email}
                             </span>
-                            <span className={`col-span-3 text-sm truncate ${!message.isRead ? 'font-medium text-foreground' : 'text-accent'}`}>
+                            <span className={`col-span-3 text-sm truncate ${!message.isRead ? 'font-medium text-foreground' : 'text-accent line-through'}`}>
                                 {message.subject}
                             </span>
                             <div className="col-span-2 flex justify-end gap-3">
@@ -53,6 +57,7 @@ const MessagesManager: React.FC = () => {
                                     show message
                                 </button>
                                 <button
+                                    onClick={()=>handlerUpdateMessage(message._id!)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer transition-colors">
                                     read
                                 </button>
