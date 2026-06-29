@@ -42,4 +42,18 @@ export const useUpdateTimeline = ()=>{
             queryClient.invalidateQueries({queryKey:['timelines']})
         }
     })
+};
+
+export const useDeleteTimeline = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (id:string)=>{
+            const res = await privateApi.delete(`timeline/${id}`);
+            
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['timelines']})
+        }
+    })
 }

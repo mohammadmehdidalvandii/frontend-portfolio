@@ -1,12 +1,14 @@
-import { useGetAllTimelines } from "@services/timeline.services";
+import { useDeleteTimeline, useGetAllTimelines } from "@services/timeline.services";
 import { lazy } from "react"
 import { TimelineDTO } from "../../../../types/timelines";
+import { showConfirm } from "@utils/confirm";
+import { showError, showSuccess } from "@utils/Toasts";
 
 const AddTimelineModel = lazy(() => import('@models/AddTimelineModel'));
 const EditTimelineModel = lazy(() => import('@models/EditTimelineModel'));
 const TimelineManager: React.FC = () => {
     const { data: Timelines, isError, isLoading } = useGetAllTimelines();
-
+    const deleteTimeline = useDeleteTimeline();
 
     if (isLoading)
         return <p className="font-mono text-center text-primary">// loading...</p>;
@@ -16,6 +18,21 @@ const TimelineManager: React.FC = () => {
           // error fetching timelines
             </p>
         );
+
+        const handlerDeleteTimeline = async (timelineId:string)=>{
+            const result = await  showConfirm('Are you sure you want to delete the timeline?');
+            if(result.isConfirmed){
+              deleteTimeline.mutate(timelineId ,{
+                  onSuccess:()=>{
+                    showSuccess('Project deleted successfully')
+                  },
+                  onError:(error:any)=>{
+                      showError(error.response?.data.error.message || 'Something is wrong')
+                  }
+              })
+            }   
+        }
+
     return (
         <div>
             <   div className="flex justify-between items-center mb-6">
@@ -39,7 +56,10 @@ const TimelineManager: React.FC = () => {
                             </span>
                             <span className="col-span-2 flex justify-end gap-2">
                                 <EditTimelineModel timeline={item} />
-                                <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
+                                <button
+                                    type="button"
+                                    onClick={()=>handlerDeleteTimeline(item._id!)}
+                                className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
                             </span>
                         </div>
                     </div>
