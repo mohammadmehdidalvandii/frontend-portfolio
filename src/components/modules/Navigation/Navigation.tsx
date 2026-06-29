@@ -18,8 +18,8 @@ function Navigation() {
           M. DALVANDI // STACK_CORE
         </Link>
         <div className="hidden md:flex gap-6 lg:gap-8 text-[12px] uppercase tracking-widest">
-          {links.map((link) => (
-            <NavLink to={link.to} className="text-accent hover:text-primary">
+          {links.map((link , index) => (
+            <NavLink key={index} to={link.to} className="text-accent hover:text-primary">
               {link.label}
             </NavLink>
           ))}
