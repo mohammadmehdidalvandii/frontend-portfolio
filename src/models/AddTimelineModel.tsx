@@ -10,6 +10,7 @@ import { Formik } from "formik";
 import { useCreateTimelines } from "@services/timeline.services";
 import { showError, showSuccess } from "@utils/Toasts";
 import { TimelineDTO } from "../types/timelines";
+import { validationTimelinesSchema } from "../validations/timelines.validation";
 
 const AddTimelineModel: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -36,12 +37,13 @@ const AddTimelineModel: React.FC = () => {
             achievement:[''],
             isCurrent:false,
           }}
+          validationSchema={validationTimelinesSchema}
           onSubmit={(values:TimelineDTO , {resetForm})=>{
             console.log('values =>' , values);
             createTimeline.mutate(values,{
               onSuccess:()=>{
                 showSuccess('Timeline created successfully')
-                // resetForm()
+                resetForm()
               },
               onError:(error:any)=>{
                 showError(error.response?.data || 'Something is wrong')
