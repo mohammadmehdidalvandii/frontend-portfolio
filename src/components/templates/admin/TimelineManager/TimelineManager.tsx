@@ -18,7 +18,7 @@ const TimelineManager: React.FC = () => {
         );
     return (
         <div>
-            <div className="flex justify-between items-center mb-6">
+            <   div className="flex justify-between items-center mb-6">
                 <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
                     Manage Timeline
                 </h2>

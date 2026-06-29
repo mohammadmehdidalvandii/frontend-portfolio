@@ -58,7 +58,8 @@ const Timeline: React.FC = () => {
                 {item.detail}
               </p>
               <ul className="mt-4 space-y-2">
-                {item.achievement.map((i , index)=>(
+                {item.achievement.map((item)=>(
+                  item.split(',').map((i , index)=>(
                 <li key={index} className="flex gap-3 text-base text-foreground/80">
                   <span className="font-mono text-primary text-[12px] pt-1">
                     ▸
@@ -67,6 +68,7 @@ const Timeline: React.FC = () => {
                     {i}
                   </span>
                 </li>
+                  ))
                 ))}
               </ul>
             </li>
