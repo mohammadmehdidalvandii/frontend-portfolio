@@ -1,7 +1,17 @@
-import {useMutation} from '@tanstack/react-query';
-import { publicApi } from '../config/api';
+import {useMutation, useQuery} from '@tanstack/react-query';
+import { privateApi, publicApi } from '../config/api';
 import { MessageDTO } from '../types/message';
 
+
+export const useGetAllMessage = ()=>{
+    return useQuery({
+        queryKey:['messages'],
+        queryFn: async ()=>{
+            const res = await privateApi.get('/message');
+            return res.data?.data
+        }
+    })
+}
 
 export const useSendMessage = ()=>{
     return useMutation({
@@ -12,4 +22,4 @@ export const useSendMessage = ()=>{
             return res.data;
         }
     })
-}
+};

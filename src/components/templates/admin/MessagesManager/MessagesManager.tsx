@@ -1,33 +1,97 @@
+import { useState } from "react";
+import { useGetAllMessage,  } from "@services/contact.services";
+import { MessageDTO } from "../../../../types/message";
 
-function MessagesManager() {
-  return (
-    <div>
-        <div className="flex justify-between items-center mb-6">
-            <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
-                Inbox / User message
-            </h2>
-            <button className="px-4 py-2 bg-foreground text-bg font-mono text-[12px] uppercase tracking-widest hover:bg-primary transition-colors cursor-pointer">
-                Mark all read
-            </button>
-        </div>
-        {/* <div className="border border-dashed border-input py-16 text-center font-mono text-lg text-foreground">
-            {`Inbox is empty. messages from the contact  form will appear hero`}
-        </div> */}
-        <div className="divide-y divide-input border-y border-input">
-        <div className="grid grid-cols-12 gap-4 py-4 items-center cursor-pointer hover:bg-secondary/30 transition-colors">
-            <div className="col-span-1 flex justify-center"></div>
-            <span className="col-span-3 text-xs">name</span>
-            <span className="col-span-3 font-mono text-[12px]">mail</span>
-            <span className="col-span-3 text-sm text-foreground">subject</span>
-            <span className="col-span-1 font-mono text-[12px] text-primary"></span>
-            <div className="col-span-1 flex justify-end">
-                                    <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Edit</button>
-                    <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
+const MessagesManager: React.FC = () => {
+    const { data: Messages, isLoading, isError } = useGetAllMessage();
+    const [selected, setSelected] = useState<MessageDTO | null>(null);
+
+    if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
+    if (isError) return <p className="font-mono text-center text-primary">// error fetching messages</p>;
+
+
+    return (
+        <div>            
+            <div className="flex justify-between items-center mb-6">
+                <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+                    Inbox / User message
+                </h2>
+                <span className="font-mono text-[11px] text-accent">
+                    {Messages?.filter((m: MessageDTO) => !m.isRead).length} unread
+                </span>
             </div>
-        </div>
-        </div>
-    </div>
-  )
-}
+            {!Messages || Messages.length === 0 ? (
+                <div className="border border-dashed border-input py-16 text-center font-mono text-lg text-foreground">
+                    {`Inbox is empty. messages from the contact form will appear here`}
+                </div>
+            ) : (
+                <div className="divide-y divide-input border-y border-input">
+                    {Messages.map((message: MessageDTO) => (
+                        <div key={message._id}
+                            className={`grid grid-cols-12 gap-4 py-4 px-2 items-center transition-colors ${!message.isRead ? 'bg-primary/5' : ''}`}>
 
-export default MessagesManager
+                            <div className="col-span-1 flex justify-center">
+                                {!message.isRead ? (
+                                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                ) : (
+                                    <span className="w-2 h-2 rounded-full bg-input" />
+                                )}
+                            </div>
+                            <span className={`col-span-2 text-xs truncate ${!message.isRead ? 'font-bold text-foreground' : 'text-accent'}`}>
+                                {message.name}
+                            </span>
+                            <span className="col-span-3 font-mono text-[11px] text-accent truncate">
+                                {message.email}
+                            </span>
+                            <span className={`col-span-3 text-sm truncate ${!message.isRead ? 'font-medium text-foreground' : 'text-accent'}`}>
+                                {message.subject}
+                            </span>
+                            <div className="col-span-2 flex justify-end gap-3">
+                                <button
+                                    onClick={()=>setSelected(message)}
+                                    className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer transition-colors">
+                                    show message
+                                </button>
+                                <button
+                                    className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer transition-colors">
+                                    read
+                                </button>
+                                <button
+                                    className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-destructive cursor-pointer transition-colors">
+                                    delete
+                                </button>
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* message modal */}
+            {selected && (
+                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+                    onClick={() => setSelected(null)}>
+                    <div className="bg-black border border-input p-8 max-w-lg w-full font-mono mx-4"
+                        onClick={(e) => e.stopPropagation()}>
+                        <p className="text-[10px] uppercase tracking-[0.3em] text-primary mb-1">
+                            // message from {selected.name}
+                        </p>
+                        <p className="text-[12px] text-accent mb-6">{selected.email}</p>
+                        <h3 className="text-lg font-bold mb-4 tracking-tight">{selected.subject}</h3>
+                        <p className="text-sm text-accent leading-relaxed whitespace-pre-line">
+                            {selected.message}
+                        </p>
+                        <div className="flex justify-between items-center mt-8">
+                            <button onClick={() => setSelected(null)}
+                                className="font-mono text-[12px] uppercase tracking-widest text-accent hover:text-primary transition-colors">
+                                // close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default MessagesManager;
