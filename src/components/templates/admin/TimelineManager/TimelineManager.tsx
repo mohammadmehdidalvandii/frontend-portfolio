@@ -38,7 +38,7 @@ const TimelineManager: React.FC = () => {
                                 {item.detail}
                             </span>
                             <span className="col-span-2 flex justify-end gap-2">
-                                <EditTimelineModel />
+                                <EditTimelineModel timeline={item} />
                                 <button className="font-mono text-[14px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer">Delete</button>
                             </span>
                         </div>

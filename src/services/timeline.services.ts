@@ -26,4 +26,20 @@ export const useCreateTimelines = ()=>{
             queryClient.invalidateQueries({queryKey:['timelines']})
         }
     })
+};
+
+export const useUpdateTimeline = ()=>{
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async ({id , values}:{id:string , values:TimelineDTO})=>{
+            const res = await privateApi.patch(`/timeline/${id}` , values ,{
+                headers:{'Content-Type':'application/json'}
+            });
+
+            return res.data?.data
+        },
+        onSuccess:()=>{
+            queryClient.invalidateQueries({queryKey:['timelines']})
+        }
+    })
 }
