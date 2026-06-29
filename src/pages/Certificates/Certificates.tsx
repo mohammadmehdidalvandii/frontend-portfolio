@@ -20,7 +20,7 @@ function Certificates() {
           <p className="font-mono text-center text-primary">There is no certificate.</p>
         ) : (          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 bg-input border border-input">
-            {Certificates.map((certificate:CertificateDTO)=>(
+            {!Certificates || Certificates.map((certificate:CertificateDTO)=>(
               <CertificateCard 
                 key={certificate._id}
                 title={certificate.title}

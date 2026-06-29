@@ -3,6 +3,7 @@ import React, { lazy } from "react"
 import { ProjectDTO } from "../../../../types/project";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 const AddProjectModel = lazy(()=>import('@models/AddProjectModel'));
 const EditProjectModel = lazy(()=>import('@models/EditProjectModel'));
@@ -21,9 +22,8 @@ const ProjectManger:React.FC =()=>{
                 onSuccess:()=>{
                   showSuccess('Project deleted successfully')
                 },
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onError:(error:any)=>{
-                    showError(error.response?.data.error.message || 'Something is wrong')
+                onError:(error)=>{
+                    showError(getApiErrorMessage(error))
                 }
             })
           }

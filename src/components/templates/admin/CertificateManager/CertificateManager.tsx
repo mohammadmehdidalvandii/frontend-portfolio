@@ -3,6 +3,7 @@ import { lazy } from "react";
 import { CertificateDTO } from "../../../../types/certificate";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 const AddCredentialModel = lazy(() => import("@models/AddCredentialModel"));
 const EditCredentialModel = lazy(() => import("@models/EditCredentialModel"));
@@ -21,7 +22,7 @@ function CertificateManager() {
           showSuccess('Certificate deleted successfully')
         },
         onError:(error:any)=>{
-          showError(error.response?.data.error.message || 'Something is wrong')
+          showError(getApiErrorMessage(error))
         }
       })
     }

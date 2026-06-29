@@ -4,6 +4,7 @@ import { TimelineDTO } from "../types/timelines";
 import { Formik } from "formik";
 import { useUpdateTimeline } from "@services/timeline.services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 interface TimelineData {
   timeline:TimelineDTO
@@ -38,8 +39,8 @@ const  EditTimelineModel:React.FC<TimelineData> = ({timeline})=>{
                 showSuccess('Timeline Updated successfully'),
                 setOpen(false)
               },
-              onError:(error:any)=>{
-                showError(error.response?.data || 'Something is wrong')
+              onError:(error)=>{
+                showError(getApiErrorMessage(error))
               }
             })
           }}

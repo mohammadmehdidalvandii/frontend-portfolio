@@ -11,6 +11,7 @@ import { ProjectDTO } from "../types/project";
 import { validationProjectSchema } from "../validations/project.validation";
 import { useCreatedProject } from "@services/project.services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 function AddProjectModel() {
   const [open, setOpen] = useState(false);
@@ -62,9 +63,8 @@ function AddProjectModel() {
                     resetForm()
                     setOpen(false)
                 },
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onError:(error:any)=>{
-                    showError(error.response?.data || 'Something is wrong')
+                onError:(error)=>{
+                    showError(getApiErrorMessage(error))
                 }
             })
           }}

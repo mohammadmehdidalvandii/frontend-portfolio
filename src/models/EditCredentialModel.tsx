@@ -10,6 +10,7 @@ import { CertificateDTO } from "../types/certificate";
 import { Formik } from "formik";
 import { useUpdateCertificate } from "@services/certificate.services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 interface CertificateData {
   certificate:CertificateDTO
@@ -36,7 +37,7 @@ const EditCredentialModel:React.FC<CertificateData> = ({certificate})=>{
           title:certificate.title,
           issuer:certificate.issuer,
           year:certificate.year,
-          credentialId:certificate._id!,
+          credentialId:certificate.credentialId,
           image:certificate.image,
           verificationLink:certificate.verificationLink,
         }}
@@ -53,8 +54,8 @@ const EditCredentialModel:React.FC<CertificateData> = ({certificate})=>{
               showSuccess('Certificate updated successfully')
               setOpen(false)
             },
-            onError:(error:any)=>{
-              showError(error.response?.data.error.message || 'Something is wrong')
+            onError:(error)=>{
+              showError(getApiErrorMessage(error))
             }
           })
         }}

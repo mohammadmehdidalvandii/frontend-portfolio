@@ -11,6 +11,7 @@ import { CertificateDTO } from "../types/certificate";
 import { validationCertificateSchema } from "../validations/certificate.validation";
 import { useCreateCertificate } from "@services/certificate.services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 function AddCredentialModel() {
   const createCertificate = useCreateCertificate();
@@ -52,8 +53,8 @@ function AddCredentialModel() {
               resetForm();
               setOpen(false);
             },
-            onError:(error:any)=>{
-              showError(error.response?.data.error.message || 'Something went wrong');
+            onError:(error)=>{
+              showError(getApiErrorMessage(error));
             }
           })
         }}

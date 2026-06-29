@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useDeleteMessage, useGetAllMessage, useUpdateMessage,  } from "@services/contact.services";
+import { useDeleteMessage, useGetAllMessage, useUpdateMessage, } from "@services/contact.services";
 import { MessageDTO } from "../../../../types/message";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 const MessagesManager: React.FC = () => {
     const { data: Messages, isLoading, isError } = useGetAllMessage();
@@ -13,27 +14,26 @@ const MessagesManager: React.FC = () => {
     if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
     if (isError) return <p className="font-mono text-center text-primary">// error fetching messages</p>;
 
-    const handlerUpdateMessage = (messageId:string) =>{
+    const handlerUpdateMessage = (messageId: string) => {
         updateMessage.mutate({ id: messageId, values: { isRead: true } });
     }
 
-    const handleDeleteMessage = async (messageId:string) =>{
-        const result = await  showConfirm('Are you sure you want to delete the project?');
-        if(result.isConfirmed){
-          deleteMessage.mutate(messageId ,{
-              onSuccess:()=>{
-                showSuccess('Project deleted successfully')
-              },
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              onError:(error:any)=>{
-                  showError(error.response?.data.error.message || 'Something is wrong')
-              }
-          })
+    const handleDeleteMessage = async (messageId: string) => {
+        const result = await showConfirm('Are you sure you want to delete the project?');
+        if (result.isConfirmed) {
+            deleteMessage.mutate(messageId, {
+                onSuccess: () => {
+                    showSuccess('Project deleted successfully')
+                },
+                onError: (error) => {
+                    showError(getApiErrorMessage(error))
+                }
+            })
         }
     }
 
-        return (
-        <div>            
+    return (
+        <div>
             <div className="flex justify-between items-center mb-6">
                 <h2 className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
                     Inbox / User message
@@ -70,17 +70,17 @@ const MessagesManager: React.FC = () => {
                             </span>
                             <div className="col-span-2 flex justify-end gap-3">
                                 <button
-                                    onClick={()=>setSelected(message)}
+                                    onClick={() => setSelected(message)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer transition-colors">
                                     show message
                                 </button>
                                 <button
-                                    onClick={()=>handlerUpdateMessage(message._id!)}
+                                    onClick={() => handlerUpdateMessage(message._id!)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-primary cursor-pointer transition-colors">
                                     read
                                 </button>
                                 <button
-                                    onClick={()=>handleDeleteMessage(message._id!)}
+                                    onClick={() => handleDeleteMessage(message._id!)}
                                     className="font-mono text-[11px] uppercase tracking-widest text-accent hover:text-destructive cursor-pointer transition-colors">
                                     delete
                                 </button>

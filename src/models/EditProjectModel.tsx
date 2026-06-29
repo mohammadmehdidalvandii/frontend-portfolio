@@ -10,6 +10,7 @@ import { ProjectDTO } from "../types/project";
 import { Formik } from "formik";
 import { useUpdatedProject } from "@services/project.services";
 import { showError, showSuccess } from "@utils/Toasts";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 interface ProjectData {
   project: ProjectDTO;
@@ -63,9 +64,8 @@ const EditProjectModel: React.FC<ProjectData> = ({ project }) => {
                     showSuccess('Project updated successfully');
                     setOpen(false)
                 },
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onError:(error:any)=>{
-                    showError(error.response?.data.error.message || 'Something is wrong')
+                onError:(error)=>{
+                    showError(getApiErrorMessage(error))
                 }
             })
           }}

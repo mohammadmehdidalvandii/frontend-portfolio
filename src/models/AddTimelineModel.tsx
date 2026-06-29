@@ -11,6 +11,7 @@ import { useCreateTimelines } from "@services/timeline.services";
 import { showError, showSuccess } from "@utils/Toasts";
 import { TimelineDTO } from "../types/timelines";
 import { validationTimelinesSchema } from "../validations/timelines.validation";
+import { getApiErrorMessage } from "@utils/getApiError";
 
 const AddTimelineModel: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -43,10 +44,11 @@ const AddTimelineModel: React.FC = () => {
             createTimeline.mutate(values,{
               onSuccess:()=>{
                 showSuccess('Timeline created successfully')
-                resetForm()
+                resetForm();
+                setOpen(false)
               },
-              onError:(error:any)=>{
-                showError(error.response?.data || 'Something is wrong')
+              onError:(error)=>{
+                showError(getApiErrorMessage(error))
               }
             })
 
