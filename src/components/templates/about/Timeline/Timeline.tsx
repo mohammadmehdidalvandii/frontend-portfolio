@@ -26,7 +26,7 @@ const Timeline: React.FC = () => {
       </div>
       <div className="lg:col-span-8 relative">
         <ul className="space-y-10">
-          {Timelines.length === 0 ? (
+          {!Timeline || Timelines.length === 0 ? (
             <p className="font-mono text-center text-primary">
               // No timelines found
             </p>
