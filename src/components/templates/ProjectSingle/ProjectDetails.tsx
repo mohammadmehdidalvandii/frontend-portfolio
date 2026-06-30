@@ -5,7 +5,6 @@ import { ProjectDTO } from "../../../types/project";
 
 
 const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
-  console.log("project =>" , project)
   return (
     <div className="px-6 max-w-screen-2xl mx-auto pt-32 pb-32">
       <div>

@@ -9,9 +9,11 @@ function Footer() {
                 © {new Date().getFullYear()} MOHAMMADMEHDI DALVANDI ARCHIVE. ALL RIGHT RESERVED.
             </p>
             <div className="flex gap-10 font-mono text-base text-accent">
-                <Link to='/' target='_blank' rel='noreferrer' className="hover:text-foreground">Github</Link>
-                <Link to='/' target='_blank' rel='noreferrer' className="hover:text-foreground">LinkedIn</Link>
-                <Link to='/' target='_blank' rel='noreferrer' className="hover:text-foreground">Email</Link>
+                <Link to='https://github.com/mohammadmehdidalvandii' target='_blank' rel='noreferrer' className="hover:text-foreground">Github</Link>
+                <Link to='https://www.linkedin.com/in/mohammadmehdidalvandii/' target='_blank' rel='noreferrer' className="hover:text-foreground">LinkedIn</Link>
+                <Link to='mailto:mhmdmehdidalvandi@gmail.com' target='_blank' rel='noreferrer' className="hover:text-foreground">Email</Link>
+                <Link to='https://t.me/The_Dev_Log' target='_blank' rel='noreferrer' className="hover:text-foreground">Telegram</Link>
+                <Link to='https://www.youtube.com/@Dalvandi_code' target='_blank' rel='noreferrer' className="hover:text-foreground">Youtube</Link>
             </div>
         </div>
     </footer>

@@ -19,7 +19,7 @@ function Certificates() {
         {CertificateCard.length === 0 ? (
           <p className="font-mono text-center text-primary">There is no certificate.</p>
         ) : (          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 bg-input border border-input">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0  border border-input">
             {!Certificates || Certificates.map((certificate:CertificateDTO)=>(
               <CertificateCard 
                 key={certificate._id}

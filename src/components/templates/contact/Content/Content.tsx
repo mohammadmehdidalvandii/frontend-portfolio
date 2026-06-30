@@ -8,7 +8,7 @@ function Content() {
           Email
         </p>
         <Link
-          to="/"
+          to="mailto:mhmdmehdidalvandi@gmail.com"
           className="text-2xl font-bold hover:text-primary transition-colors"
         >
           mhmdmehdidalvandi@gmail.com
@@ -22,26 +22,32 @@ function Content() {
       </div>
             <div>
         <p className="font-mono text-[18px] uppercase tracking-[0.3em] text-accent mb-2">
-          Email
+          Elsewhere
         </p>
         <div className="flex flex-col gap-2 font-mono text-sm">
         <Link
-          to="/"
+          to="https://github.com/mohammadmehdidalvandii"
           className="text-2xl font-bold hover:text-primary transition-colors"
         >
          → Github
         </Link>
         <Link
-          to="/"
+          to="https://www.linkedin.com/in/mohammadmehdidalvandii/"
           className="text-2xl font-bold hover:text-primary transition-colors"
         >
          → LinkedIn
         </Link>
         <Link
-          to="/"
+          to="https://t.me/The_Dev_Log"
           className="text-2xl font-bold hover:text-primary transition-colors"
         >
-          → Telegram
+          → Telegram Channel
+        </Link>
+        <Link
+          to="https://www.youtube.com/@Dalvandi_code"
+          className="text-2xl font-bold hover:text-primary transition-colors"
+        >
+          → Youtube
         </Link>
 
         </div>

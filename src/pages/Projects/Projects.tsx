@@ -23,7 +23,7 @@ function Projects() {
               SELECTED WORK
             </h1>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-input border-y border-input">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px t border-y border-input">
       {Projects.length === 0 ? (
         <p className="font-mono text-center text-primary">// no projects found</p>
       ) : (

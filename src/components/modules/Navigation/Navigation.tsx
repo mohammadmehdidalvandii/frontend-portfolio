@@ -1,5 +1,6 @@
 import { Sheet, SheetContent, SheetTrigger } from "@components/UI/Sheet";
 import { Menu } from "lucide-react";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const links = [
@@ -11,6 +12,7 @@ const links = [
 ];
 
 function Navigation() {
+   const [open, setOpen] = useState(false);
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-input bg-bg/80 backdrop-blur-md">
       <div className="max-w-screen-2xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -24,7 +26,7 @@ function Navigation() {
             </NavLink>
           ))}
         </div>
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button className="md:hidden inline-flex items-center justify-center p-2 border border-primary rounded-sm hover:bg-primary/20 transition-colors cursor-pointer">
               <Menu className="h-5 w-5 text-primary"/>
@@ -35,6 +37,7 @@ function Navigation() {
               {links.map((link) => (
                 <NavLink
                   to={link.to}
+                  onClick={()=>setOpen(false)}
                   className="text-accent hover:text-primary"
                 >
                   {link.label}

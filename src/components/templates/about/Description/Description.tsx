@@ -4,7 +4,7 @@ function Description() {
       <div className="lg:col-span-7 space-y-6 text-accent leading-relaxed text-xl">
         <p>
           I'm <span className="text-foreground">Mohammadmehdi Dalvandi</span>, a
-          full stack engineer based in Tehran. I design and build systems end to
+          full stack engineer based in Borujerd. I design and build systems end to
           end — from low-level data pipelines to the pixel work users actually
           feel.
         </p>

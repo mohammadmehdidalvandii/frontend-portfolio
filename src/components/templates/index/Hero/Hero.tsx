@@ -16,7 +16,7 @@ function Hero() {
             <div className="lg:col-span-4 order-1 lg:order-2">
                 <div className='relative border border-input bg-secondary/40 p-2'>
                     <img
-                        src='/assets/images/pro.jpg'
+                        src='/assets/images/me.png'
                         alt='mohammadmehdi'
                         width={896}
                         height={1152}

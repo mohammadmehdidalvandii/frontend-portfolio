@@ -10,24 +10,23 @@ function Stack() {
         <div className="lg:col-span-8  divide-y divide-input border-y border-input">
             <div className="grid grid-cols-12 py-4 gap-4">
                 <span className="col-span-4 font-mono text-base uppercase tracking-widest text-accent">frontend</span>
-                <span className="col-span-8 text-[14px] font-mono text-primary">React, Next.js, TypeScript, Tailwind,</span>
+                <span className="col-span-8 text-[14px] font-mono text-primary">React, Next.js, TypeScript, Tailwind</span>
             </div>
             <div className="grid grid-cols-12 py-4 gap-4">
                 <span className="col-span-4 font-mono text-base uppercase tracking-widest text-accent">BACKEND</span>
-                <span className="col-span-8 text-[14px] font-mono text-primary">
-Node.js, Go, Rust, tRPC, GraphQL, REST</span>
+                <span className="col-span-8 text-[14px] font-mono text-primary">Node.js, Express.js, Fastify</span>
             </div>
             <div className="grid grid-cols-12 py-4 gap-4">
                 <span className="col-span-4 font-mono text-base uppercase tracking-widest text-accent">DATA</span>
-                <span className="col-span-8 text-[14px] font-mono text-primary">PostgreSQL, ClickHouse, Redis, Kafka</span>
+                <span className="col-span-8 text-[14px] font-mono text-primary">MongoDB, MySql, Postgresql</span>
             </div>
             <div className="grid grid-cols-12 py-4 gap-4">
                 <span className="col-span-4 font-mono text-base uppercase tracking-widest text-accent">INFRA</span>
-                <span className="col-span-8 text-[14px] font-mono text-primary">AWS, GCP, Cloudflare, Docker, Kubernetes</span>
+                <span className="col-span-8 text-[14px] font-mono text-primary">Docker</span>
             </div>
             <div className="grid grid-cols-12 py-4 gap-4">
                 <span className="col-span-4 font-mono text-base uppercase tracking-widest text-accent">TOOLING</span>
-                <span className="col-span-8 text-[14px] font-mono text-primary">Vite, Turborepo, GitHub Actions, Sentry</span>
+                <span className="col-span-8 text-[14px] font-mono text-primary">Vite, GitHub</span>
             </div>
         </div>
     </div>
