@@ -41,7 +41,7 @@ const EditCredentialModel:React.FC<CertificateData> = ({certificate})=>{
           image:certificate.image,
           verificationLink:certificate.verificationLink,
         }}
-        onSubmit={(values:CertificateDTO, { resetForm }) => {
+        onSubmit={(values:CertificateDTO) => {
           const formData = new FormData();
           formData.append("title", values.title);
           formData.append("issuer", values.issuer);
