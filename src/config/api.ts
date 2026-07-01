@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export const publicApi = axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"https://api.web-dalvandi.ir",
 });
 
 export const privateApi = axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"https://api.web-dalvandi.ir",
 })
 
 privateApi.interceptors.request.use((config)=>{
