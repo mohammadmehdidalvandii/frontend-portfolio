@@ -9,7 +9,7 @@ function ProjectHome() {
   if (isError) return <p className="font-mono text-center text-primary">// error fetching projects</p>;
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-px  border-y border-input mb-32 mt-8">
-     {Projects ||  Projects.length === 0 ? (
+     {!Projects ||  Projects.length === 0 ? (
         <p className="font-mono text-center text-primary">// no projects found</p>
       ) : (
         Projects.map((project:ProjectDTO)=>(
