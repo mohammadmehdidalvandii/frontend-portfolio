@@ -14,7 +14,7 @@ function Projects() {
           <title>Projects — Mohammadmehdi Dalvandi</title>
           <meta name='description' content='Selected engineering projects by Mohammadmehdi Dalvandi.'/>
       </Helmet>
-    <div className="px-6 max-w-screen-2xl mx-auto pt-24 pb-32">
+    <div className="px-6 max-w-screen-2xl min-h-screen mx-auto pt-24 pb-32">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-primary mb-6">
               Section / 01 - Archive
@@ -24,7 +24,7 @@ function Projects() {
             </h1>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px t border-y border-input">
-      {Projects.length === 0 ? (
+      {Projects || Projects.length === 0 ? (
         <p className="font-mono text-center text-primary">// no projects found</p>
       ) : (
         Projects.map((project:ProjectDTO)=>(

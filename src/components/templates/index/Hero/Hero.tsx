@@ -17,6 +17,7 @@ function Hero() {
                 <div className='relative border border-input bg-secondary/40 p-2'>
                     <img
                         src='/assets/images/me.jpg'
+                        loading="eager"
                         alt='mohammadmehdi'
                         width={896}
                         height={1152}
