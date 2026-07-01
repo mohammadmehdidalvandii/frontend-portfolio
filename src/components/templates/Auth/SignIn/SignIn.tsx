@@ -5,6 +5,7 @@ import { useLogin } from "@services/auth.services";
 import { showError, showSuccess } from "@utils/Toasts";
 import { validationLoginSchema } from "../../../../validations/login.validation";
 import { useNavigate } from "react-router-dom";
+import { getApiErrorMessage } from "@utils/getApiError";
 function SignIn() {
   const navigate = useNavigate();
   const [showPwd, setShowPwd] = useState(false);
@@ -36,7 +37,7 @@ function SignIn() {
                 navigate('/Admin')
               },
               onError: (error) => {
-                showError( error.message || 'Something went wrong');
+                showError(getApiErrorMessage(error));
               },
             });
           }}
