@@ -16,17 +16,17 @@ function Hero() {
             <div className="lg:col-span-4 order-1 lg:order-2">
                 <div className='relative border border-input bg-secondary/40 p-2'>
                     <img
-                        src='/assets/images/me.png'
+                        src='/assets/images/me.jpg'
                         alt='mohammadmehdi'
                         width={896}
                         height={1152}
-                        className='w-full aspect-4/5 object-cover grayscale contrast-110'
+                        className='w-full aspect-4/5 object-cover  contrast-110'
                     />
-                    <div className='absolute top-4 left-4 right-4 flex justify-between font-mono text-[12px] text-primary'>
+                    <div className='absolute top-4 left-4 right-4 flex justify-between font-mono text-[12px] text-primary bg-secondary/90 px-2'>
                         <span>● REC</span>
                         <span>ID_000</span>
                     </div>
-                    <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-[12px] text-primary">
+                    <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-[12px] text-primary bg-secondary/90 px-2">
                         <span>[STATUS] READY_FOR_DEPLOY</span>
                         <span>ƒ/2.8</span>
                     </div>
