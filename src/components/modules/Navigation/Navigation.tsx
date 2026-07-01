@@ -5,10 +5,10 @@ import { NavLink, Link } from "react-router-dom";
 
 const links = [
   { to: "/", label: "Index_0" },
-  { to: "/Projects", label: "Archive_1" },
+  { to: "/projects", label: "Archive_1" },
   // { to: "/Certificates", label: "Creds_02" },
-  { to: "/About", label: "About_03" },
-  { to: "/Contact", label: "Contact_04" },
+  { to: "/about", label: "About_03" },
+  { to: "/contact", label: "Contact_04" },
 ];
 
 function Navigation() {

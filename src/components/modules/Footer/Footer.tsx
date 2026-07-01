@@ -8,7 +8,7 @@ function Footer() {
             <p className="text-base font-mono text-accent">
                 © {new Date().getFullYear()} MOHAMMADMEHDI DALVANDI ARCHIVE. ALL RIGHT RESERVED.
             </p>
-            <div className="flex gap-10 font-mono text-base text-accent">
+            <div className="flex flex-wrap gap-4  md:gap-10 font-mono text-base text-accent">
                 <Link to='https://github.com/mohammadmehdidalvandii' target='_blank' rel='noreferrer' className="hover:text-foreground">Github</Link>
                 <Link to='https://www.linkedin.com/in/mohammadmehdidalvandii/' target='_blank' rel='noreferrer' className="hover:text-foreground">LinkedIn</Link>
                 <Link to='mailto:mhmdmehdidalvandi@gmail.com' target='_blank' rel='noreferrer' className="hover:text-foreground">Email</Link>

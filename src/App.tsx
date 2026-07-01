@@ -5,6 +5,7 @@ import { MainLayout } from "@layouts/MainLayout";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminLayout from "@layouts/AdminLayout";
+import Loading from "@components/modules/Loading/Loading";
 
 
 const Index = lazy(()=>import('@pages/Index/Index'));
@@ -23,7 +24,7 @@ function App() {
       <QueryProvider>
         <BrowserRouter>
           <ToasterProvider />
-          <Suspense fallback={<div>Loading ...</div>}>
+          <Suspense fallback={<Loading/>}>
             <Routes>
               {/* All route */}
               <Route path="*" element={<NotFound/>} />
@@ -31,14 +32,14 @@ function App() {
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<Index/>}/>
-                <Route path="Projects" element={<Projects/>}/>
-                <Route path="Projects/:id" element={<ProjectSingle/>}/>
-                <Route path="Certificates" element={<Certificates/>}/>
-                <Route path="About" element={<About/>}/>
-                <Route path="Contact" element={<Contact/>}/>
+                <Route path="projects" element={<Projects/>}/>
+                <Route path="projects/:id" element={<ProjectSingle/>}/>
+                <Route path="certificates" element={<Certificates/>}/>
+                <Route path="about" element={<About/>}/>
+                <Route path="contact" element={<Contact/>}/>
               </Route>
               {/* Admin Layout */}
-              <Route path="/Admin" element={<AdminLayout/>}>
+              <Route path="/admin" element={<AdminLayout/>}>
                 <Route index element={<Admin/>}/>
               </Route>
             </Routes>
