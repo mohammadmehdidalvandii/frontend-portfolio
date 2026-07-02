@@ -4,6 +4,7 @@ import { ProjectDTO } from "../../../../types/project";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
 import { getApiErrorMessage } from "@utils/getApiError";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 const AddProjectModel = lazy(()=>import('@models/AddProjectModel'));
 const EditProjectModel = lazy(()=>import('@models/EditProjectModel'));
@@ -12,8 +13,8 @@ const ProjectManger:React.FC =()=>{
         const {data:Projects , isError , isLoading} = useGetAllProject();
         const deleteProject = useDeleteProject();
       
-          if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-        if (isError) return <p className="font-mono text-center text-primary">// error fetching projects</p>;
+  if (isLoading) return <StateFeedback type="loading"/>;
+  if (isError) return <StateFeedback type="error" message=" Failed to fetch timelines"/>;
 
         const handleDeleteProject = async (projectId:string)=>{
           const result = await  showConfirm('Are you sure you want to delete the project?');
@@ -35,7 +36,7 @@ const ProjectManger:React.FC =()=>{
         <AddProjectModel/>
         </div>
               {Projects.length === 0 ? (
-        <p className="font-mono text-center text-primary">// no projects found</p>
+         <StateFeedback type="empty" message="No projects yet !!!"/>
       ) : (
         Projects.map((project:ProjectDTO)=>(
 

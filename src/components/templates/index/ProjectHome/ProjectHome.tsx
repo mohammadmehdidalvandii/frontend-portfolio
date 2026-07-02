@@ -1,16 +1,18 @@
 import ProjectCard from "@components/modules/ProjectCard/ProjectCard"
 import { useGetAllProject } from "@services/project.services"
 import { ProjectDTO } from "../../../../types/project";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 function ProjectHome() {
   const {data:Projects , isError , isLoading} = useGetAllProject();
 
-    if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-  if (isError) return <p className="font-mono text-center text-primary">// error fetching projects</p>;
+  
+      if (isLoading) return <StateFeedback type="loading"/>;
+    if (isError) return <StateFeedback type="error" message="Failed to fetch project"/>;
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-px  border-y border-input mb-32 mt-8">
      {!Projects ||  Projects.length === 0 ? (
-        <p className="font-mono text-center text-primary">// no projects found</p>
+        <StateFeedback type="empty" message="No projects yet !!!"/>
       ) : (
         Projects.slice(0 , 4).map((project:ProjectDTO)=>(
           <ProjectCard 

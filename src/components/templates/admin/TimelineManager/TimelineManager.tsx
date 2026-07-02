@@ -4,6 +4,7 @@ import { TimelineDTO } from "../../../../types/timelines";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
 import { getApiErrorMessage } from "@utils/getApiError";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 const AddTimelineModel = lazy(() => import('@models/AddTimelineModel'));
 const EditTimelineModel = lazy(() => import('@models/EditTimelineModel'));
@@ -11,14 +12,8 @@ const TimelineManager: React.FC = () => {
     const { data: Timelines, isError, isLoading } = useGetAllTimelines();
     const deleteTimeline = useDeleteTimeline();
 
-    if (isLoading)
-        return <p className="font-mono text-center text-primary">// loading...</p>;
-    if (isError)
-        return (
-            <p className="font-mono text-center text-primary">
-          // error fetching timelines
-            </p>
-        );
+  if (isLoading) return <StateFeedback type="loading"/>;
+  if (isError) return <StateFeedback type="error" message=" Failed to fetch timelines"/>;
 
         const handlerDeleteTimeline = async (timelineId:string)=>{
             const result = await  showConfirm('Are you sure you want to delete the timeline?');
@@ -27,7 +22,7 @@ const TimelineManager: React.FC = () => {
                   onSuccess:()=>{
                     showSuccess('Project deleted successfully')
                   },
-                  onError:(error:any)=>{
+                  onError:(error)=>{
                       showError(getApiErrorMessage(error))
                   }
               })
@@ -43,9 +38,7 @@ const TimelineManager: React.FC = () => {
                 <AddTimelineModel />
             </div>
             {Timelines.length === 0 ? (
-                <p className="font-mono text-center text-primary">
-                        // No timelines found
-                </p>
+ <StateFeedback type="empty" message="No timelines yet !!!"/>    
             ) : (
                 Timelines.map((item: TimelineDTO) => (
                     <div className="divide-y divide-input border-y border-input" key={item._id}>

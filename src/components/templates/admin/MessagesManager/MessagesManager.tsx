@@ -4,6 +4,7 @@ import { MessageDTO } from "../../../../types/message";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
 import { getApiErrorMessage } from "@utils/getApiError";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 const MessagesManager: React.FC = () => {
     const { data: Messages, isLoading, isError } = useGetAllMessage();
@@ -11,8 +12,8 @@ const MessagesManager: React.FC = () => {
     const deleteMessage = useDeleteMessage();
     const [selected, setSelected] = useState<MessageDTO | null>(null);
 
-    if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-    if (isError) return <p className="font-mono text-center text-primary">// error fetching messages</p>;
+  if (isLoading) return <StateFeedback type="loading"/>;
+  if (isError) return <StateFeedback type="error" message=" Failed to fetch timelines"/>;
 
     const handlerUpdateMessage = (messageId: string) => {
         updateMessage.mutate({ id: messageId, values: { isRead: true } });
@@ -43,9 +44,7 @@ const MessagesManager: React.FC = () => {
                 </span>
             </div>
             {!Messages || Messages.length === 0 ? (
-                <div className="border border-dashed border-input py-16 text-center font-mono text-lg text-foreground">
-                    {`Inbox is empty. messages from the contact form will appear here`}
-                </div>
+                <StateFeedback type="empty" message="Inbox is empty. messages from the contact form will appear here !!!"/>
             ) : (
                 <div className="divide-y divide-input border-y border-input">
                     {Messages.map((message: MessageDTO) => (

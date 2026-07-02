@@ -2,12 +2,13 @@ import ProjectCard from "@components/modules/ProjectCard/ProjectCard"
 import { useGetAllProject } from "@services/project.services";
 import { Helmet } from "react-helmet-async"
 import { ProjectDTO } from "../../types/project";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 function Projects() {
     const {data:projects , isError , isLoading} = useGetAllProject();
   
-      if (isLoading) return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
-    if (isError) return <p className="font-mono text-center text-primary mt-20">// error fetching projects</p>;
+      if (isLoading) return <StateFeedback type="loading"/>;
+    if (isError) return <StateFeedback type="error" message="Failed to fetch project"/>;
   return (
     <>
       <Helmet>
@@ -25,7 +26,7 @@ function Projects() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px t border-y border-input">
       {!projects || projects.length === 0 ? (
-        <p className="font-mono text-center text-primary">// no projects found</p>
+       <StateFeedback type="empty" message="No projects yet !!!"/>
       ) : (
         projects.map((project:ProjectDTO)=>(
           <ProjectCard 

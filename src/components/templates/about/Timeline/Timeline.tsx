@@ -1,19 +1,14 @@
 import React from 'react';
 import { useGetAllTimelines } from "@services/timeline.services";
 import { TimelineDTO } from "../../../../types/timelines";
+import StateFeedback from '@components/modules/StateFeedback/StateFeedback';
 
 const Timeline: React.FC = () => {
   const { data:Timelines, isError, isLoading } = useGetAllTimelines();
 
 
-  if (isLoading)
-    return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
-  if (isError)
-    return (
-      <p className="font-mono text-center text-primary mt-20">
-        // error fetching timelines
-      </p>
-    );
+      if (isLoading) return <StateFeedback type="loading"/>;
+    if (isError) return <StateFeedback type="error" message="Failed to fetch timelines"/>;
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <div className="lg:col-span-4">
@@ -26,10 +21,8 @@ const Timeline: React.FC = () => {
       </div>
       <div className="lg:col-span-8 relative">
         <ul className="space-y-10">
-          {!Timeline || Timelines.length === 0 ? (
-            <p className="font-mono text-center text-primary">
-              // No timelines found
-            </p>
+          {!Timelines?.length ? (
+            <StateFeedback type="empty" message="No timelines yet !!!"/>
           ) : (
             Timelines.map((item:TimelineDTO) => (
                           <li className="relative pl-10" key={item._id}>

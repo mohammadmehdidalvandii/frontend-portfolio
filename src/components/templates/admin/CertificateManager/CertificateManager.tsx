@@ -4,6 +4,7 @@ import { CertificateDTO } from "../../../../types/certificate";
 import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
 import { getApiErrorMessage } from "@utils/getApiError";
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 
 const AddCredentialModel = lazy(() => import("@models/AddCredentialModel"));
 const EditCredentialModel = lazy(() => import("@models/EditCredentialModel"));
@@ -11,8 +12,8 @@ const EditCredentialModel = lazy(() => import("@models/EditCredentialModel"));
 function CertificateManager() {
   const {data:Certificates , isError , isLoading} = useGetAllCertificate();
   const deleteCertificate = useDeleteCertificate();
-  if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-  if (isError) return <p className="font-mono text-center text-primary">// error fetching certificates</p>;
+  if (isLoading) return <StateFeedback type="loading"/>;
+  if (isError) return <StateFeedback type="error" message=" Failed to fetch timelines"/>;
 
   const handleDeleteProject = async (certificateId:string)=>{
     const result = await showConfirm('Are you sure want to delete the certificate ?')
@@ -21,7 +22,7 @@ function CertificateManager() {
         onSuccess:()=>{
           showSuccess('Certificate deleted successfully')
         },
-        onError:(error:any)=>{
+        onError:(error)=>{
           showError(getApiErrorMessage(error))
         }
       })
@@ -38,7 +39,7 @@ function CertificateManager() {
       </div>
       <div className="divide-y divide-input border-y border-input">
         {Certificates.length === 0 ? (
-          <p className="font-mono text-center text-primary">There is no certificate.</p>
+          <StateFeedback type="empty" message="No certificates yet !!!"/>
         ):(
           Certificates.map((certificate:CertificateDTO)=>(
         <div className="grid grid-cols-12 gap-4 py-4 items-center" key={certificate._id}>

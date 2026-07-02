@@ -1,3 +1,4 @@
+import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
 import ProjectDetails from "@components/templates/ProjectSingle/ProjectDetails"
 import { useGetProjectById } from "@services/project.services"
 import { Helmet } from "react-helmet-async"
@@ -8,8 +9,8 @@ function ProjectSingle() {
   const params = useParams();
   const id = String(params.id)
   const {data:project , isError , isLoading} = useGetProjectById(id)
-      if (isLoading) return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
-  if (isError) return <p className="font-mono text-center text-primary mt-20">// error fetching project</p>;
+      if (isLoading) return <StateFeedback type="loading"/>;
+  if (isError) return <StateFeedback type="error" message="Failed to fetch details project"/>;
   return (
     <>
         <Helmet>
