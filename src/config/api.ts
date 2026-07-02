@@ -2,11 +2,11 @@ import { getToken } from '@utils/auth';
 import axios from 'axios';
 
 export const publicApi = axios.create({
-    baseURL:"https://api.web-dalvandi.ir/api",
+    baseURL:"https://protfolio-back.chbkn.run/api",
 });
 
 export const privateApi = axios.create({
-    baseURL:"https://api.web-dalvandi.ir/api",
+    baseURL:"https://protfolio-back.chbkn.run/api",
 })
 
 privateApi.interceptors.request.use((config)=>{
