@@ -5,6 +5,7 @@ import { showConfirm } from "@utils/confirm";
 import { showError, showSuccess } from "@utils/Toasts";
 import { getApiErrorMessage } from "@utils/getApiError";
 import StateFeedback from "@components/modules/StateFeedback/StateFeedback";
+import fallbackImage from '../../../../../public/assets/images/backup-image.webp'
 
 const AddProjectModel = lazy(()=>import('@models/AddProjectModel'));
 const EditProjectModel = lazy(()=>import('@models/EditProjectModel'));
@@ -43,7 +44,11 @@ const ProjectManger:React.FC =()=>{
         <div className="divide-y divide-input border-y border-input" key={project._id}>
             <div className="grid grid-cols-12 gap-4 py-4 items-center">
                 <div className="col-span-2 aspect-video bg-secondary/60 border border-input overflow-hidden">
-                    <img src={project.image} alt="project" className="w-full h-full object-cover" />
+                    <img src={project.image} 
+                      onError={(e)=>{
+                        e.currentTarget.src = fallbackImage
+                      }}
+                    alt="project" className="w-full h-full object-cover" />
                 </div>
                 <span className="col-span-3 font-mono text-[14px] text-primary">{project.name}</span>
                 <span className="col-span-3 text-lg font-medium">{project.title}</span>
