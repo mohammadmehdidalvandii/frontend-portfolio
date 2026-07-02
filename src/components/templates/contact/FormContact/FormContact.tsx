@@ -37,7 +37,7 @@ const FormContact: React.FC = () => {
               name="name"
               value={values.name}
               onChange={handleChange}
-              className="w-full bg-transparent border border-input px-4 py-4 text-sm focus:border-primary focus:outline-none transition-colors"
+              className="w-full bg-transparent border border-input px-4 py-4 text-sm font-mono focus:border-primary focus:outline-none transition-colors"
             />
           </div>
           {touched.name && errors.name && (
@@ -55,7 +55,7 @@ const FormContact: React.FC = () => {
               name="email"
               value={values.email}
               onChange={handleChange}
-              className="w-full bg-transparent border border-input px-4 py-4 text-sm focus:border-primary focus:outline-none transition-colors"
+              className="w-full bg-transparent border border-input px-4 py-4 text-sm font-mono focus:border-primary focus:outline-none transition-colors"
             />
           </div>
                     {touched.name && errors.name && (
@@ -73,7 +73,7 @@ const FormContact: React.FC = () => {
               name="subject"
               value={values.subject}
               onChange={handleChange}
-              className="w-full bg-transparent border border-input px-4 py-4 text-sm focus:border-primary focus:outline-none transition-colors"
+              className="w-full bg-transparent border border-input px-4 py-4 text-sm font-mono focus:border-primary focus:outline-none transition-colors"
             />
           </div>
                     {touched.name && errors.name && (
@@ -91,7 +91,7 @@ const FormContact: React.FC = () => {
               name="message"
               value={values.message}
               onChange={handleChange}
-              className="w-full bg-transparent border border-input px-4 py-3 text-sm focus:border-primary focus:outline-none transition-colors"
+              className="w-full bg-transparent border border-input px-4 py-3 text-sm font-mono focus:border-primary focus:outline-none transition-colors"
             />
           </div>
                     {touched.name && errors.name && (
