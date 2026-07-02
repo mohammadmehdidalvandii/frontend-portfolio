@@ -36,7 +36,7 @@ function AddProjectModel() {
             stacks:[],
             image: "",
             demoLink: "",
-            githubLink: "",
+            githubLink: [],
             year: Number(""),
             role: "",
             features: [],
@@ -50,7 +50,7 @@ function AddProjectModel() {
             formData.append("title", values.title);
             formData.append("stacks", String(values.stacks));
             formData.append("demoLink", values.demoLink);
-            formData.append("githubLink", values.githubLink);
+            formData.append("githubLink", String(values.githubLink));
             formData.append("year", String(values.year));
             formData.append("role", values.role);
             formData.append("features", String(values.features));
@@ -158,7 +158,7 @@ function AddProjectModel() {
                     htmlFor=""
                     className="block font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-2"
                   >
-                    github link
+                    github link (split by ",")
                   </label>
                   <input
                     type="text"
