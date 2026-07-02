@@ -52,7 +52,7 @@ const EditProjectModel: React.FC<ProjectData> = ({ project }) => {
             formData.append("name", values.name);
             formData.append("stacks", String(values.stacks));
             formData.append("demoLink", values.demoLink);
-            formData.append("githubLink", values.githubLink);
+            formData.append("githubLink", String(values.githubLink));
             formData.append("year", String(values.year));
             formData.append("role", values.role);
             formData.append("features", String(values.features));
