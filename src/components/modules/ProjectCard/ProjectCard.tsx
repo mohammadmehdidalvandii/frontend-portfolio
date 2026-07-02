@@ -8,11 +8,11 @@ const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescripti
 
   return (
     <Link to={`/Projects/${_id}`} className="group bg-bg p-8 md:-12 hover:bg-secondary/80 transition-colors">
-        <div className="flex justify-between items-start mb-12">
+        <div className="flex justify-between flex-wrap items-start mb-12">
             <span className="font-mono text-[12px] text-primary">
                 {` / ${name}`}
             </span>
-            <span className="font-mono text-[12px] text-accent uppercase">
+            <span className="font-mono text-[12px] mt-4 md:mt-0 text-accent uppercase">
                 {stacks.map((item)=>(
                     item
                 ))}

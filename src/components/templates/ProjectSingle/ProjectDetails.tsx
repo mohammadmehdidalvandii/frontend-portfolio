@@ -17,7 +17,7 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
         <p className="font-mono text-[14px] uppercase tracking-[0.4em] text-primary mb-6">
            / {project.name}
         </p>
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+        <h1 className="text-2xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
           {project.title}
         </h1>
         <p className="text-lg md:text-xl text-accent max-w-3xl mb-10">
