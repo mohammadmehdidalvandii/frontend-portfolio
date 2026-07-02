@@ -118,7 +118,7 @@ const EditProjectModel: React.FC<ProjectData> = ({ project }) => {
                   htmlFor=""
                   className="block font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-2"
                 >
-                  stack
+                  stack (split by ",")
                 </label>
                 <input
                   type="text"
@@ -165,7 +165,7 @@ const EditProjectModel: React.FC<ProjectData> = ({ project }) => {
                     htmlFor=""
                     className="block font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-2"
                   >
-                    github link
+                    github link (split by ",")
                   </label>
                   <input
                     type="text"

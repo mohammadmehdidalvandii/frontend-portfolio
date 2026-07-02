@@ -29,9 +29,9 @@ const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescripti
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
         </div>
-            <h3 className="text-3xl md:text-4xl font-mono font-bold tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">
+            <h1 className="text-3xl md:text-4xl font-mono font-bold tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">
                 {title}
-            </h3>
+            </h1>
             <p className="text-accent max-w-sm text-sm font-mono">
                 {shortDescription}
             </p>
