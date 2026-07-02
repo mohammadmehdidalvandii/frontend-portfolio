@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProjectDTO } from "../../../types/project";
+import fallbackImage from '../../../../public/assets/images/backup-image.webp'
 
 
 
@@ -33,7 +34,11 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
           ))}
         </div>
         <div className="w-full aspect-video bg-secondary/60 border border-input mb-16 overflow-hidden">
-          <img src={project.image} alt="img-cover" loading="eager" />
+          <img src={project.image} alt="img-cover" loading="eager" 
+            onError={(e)=>{
+              e.currentTarget.src = fallbackImage
+            }}
+          />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 space-y-12">

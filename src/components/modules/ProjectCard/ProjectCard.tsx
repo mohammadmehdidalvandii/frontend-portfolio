@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProjectDTO } from "../../../types/project";
+import fallbackImage from '../../../../public/assets/images/backup-image.webp'
 
 
 
@@ -22,6 +23,9 @@ const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescripti
         </div>
         <div className="w-full aspect-video bg-secondary/60 border border-input mb-10 overflow-hidden flex items-center justify-center">
             <img src={image} alt="project title" loading="lazy"
+            onError={(e)=>{
+                e.currentTarget.src = fallbackImage
+            }}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
         </div>
