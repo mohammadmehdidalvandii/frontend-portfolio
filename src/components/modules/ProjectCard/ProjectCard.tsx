@@ -12,12 +12,13 @@ const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescripti
             <span className="font-mono text-[12px] text-primary">
                 {` / ${name}`}
             </span>
-            <span className="font-mono text-[12px] mt-4 md:mt-0 text-accent uppercase">
-                {stacks.slice(0 , 3).map((item)=>(
-                    item 
-                ))}
-                ,...
+            <div className="flex justify-between flex-wrap gap-1">
+                {stacks.slice(0 , 3).map((item , index)=>(
+            <span className="font-mono text-[8px] md:text-[12px] mt-4 md:mt-0 text-accent uppercase" key={index}>
+                    {item} 
             </span>
+                ))}
+            </div>
         </div>
         <div className="w-full aspect-video bg-secondary/60 border border-input mb-10 overflow-hidden flex items-center justify-center">
             <img src={image} alt="project title" loading="lazy"
