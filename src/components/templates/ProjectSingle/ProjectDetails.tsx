@@ -90,19 +90,19 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
                     <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">Live Demo</p>
-                    <p className="text-lg break-all group-hover:text-primary transition-colors">{project.demoLink}</p>
+                    <p className="text-lg break-all font-mono group-hover:text-primary transition-colors">{project.demoLink}</p>
                 </Link>
                 <Link to={project.githubLink} target="_blank" rel="noreferrer"
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
                     <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">source code</p>
-                    <p className="text-lg break-all group-hover:text-primary transition-colors">{project.githubLink}</p>
+                    <p className="text-lg break-all font-mono group-hover:text-primary transition-colors">{project.githubLink}</p>
                 </Link>
                 <Link to={project.githubLink} target="_blank" rel="noreferrer"
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
                     <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">source code</p>
-                    <p className="text-lg break-all group-hover:text-primary transition-colors">{project.githubLink}</p>
+                    <p className="text-lg break-all font-mono group-hover:text-primary transition-colors">{project.githubLink}</p>
                 </Link>
             </div>
           </aside>
