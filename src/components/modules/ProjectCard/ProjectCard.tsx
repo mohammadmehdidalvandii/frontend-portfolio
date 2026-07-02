@@ -7,7 +7,7 @@ import { ProjectDTO } from "../../../types/project";
 const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescription, _id}) => {
 
   return (
-    <Link to={`/Projects/${_id}`} className="group bg-bg p-8 md:-12 hover:bg-secondary/80 transition-colors">
+    <Link to={`/Projects/${_id}`} className="group bg-bg p-8 md:p-12 hover:bg-secondary/80 transition-colors">
         <div className="flex justify-between flex-wrap items-start mb-12">
             <span className="font-mono text-[12px] text-primary">
                 {` / ${name}`}

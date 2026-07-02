@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async"
 import { ProjectDTO } from "../../types/project";
 
 function Projects() {
-    const {data:Projects , isError , isLoading} = useGetAllProject();
+    const {data:projects , isError , isLoading} = useGetAllProject();
   
       if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
     if (isError) return <p className="font-mono text-center text-primary">// error fetching projects</p>;
@@ -24,10 +24,10 @@ function Projects() {
             </h1>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px t border-y border-input">
-      {!Projects || Projects.length === 0 ? (
+      {!projects || projects.length === 0 ? (
         <p className="font-mono text-center text-primary">// no projects found</p>
       ) : (
-        Projects.map((project:ProjectDTO)=>(
+        projects.map((project:ProjectDTO)=>(
           <ProjectCard 
             key={project._id}
             _id={project._id}
