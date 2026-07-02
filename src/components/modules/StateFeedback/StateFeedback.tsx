@@ -9,7 +9,7 @@ const StateFeedback: React.FC<Props> = ({
 }) => {
   if (type === "loading") {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex min-h-[20vh] items-center justify-center">
         <span className="font-monoBold text-primary animate-pulse text-2xl">
           {'< Loading />'}
         </span>
@@ -19,7 +19,7 @@ const StateFeedback: React.FC<Props> = ({
 
   if (type === "error") {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center text-center">
+      <div className="flex min-h-[20vh] flex-col items-center justify-center text-center">
         <span className="font-mono text-destructive mb-2 text-4xl">
           {'< Error />'}
         </span>
@@ -31,7 +31,7 @@ const StateFeedback: React.FC<Props> = ({
   }
 
   return (
-    <div className="flex min-h-[60vh] items-center justify-center">
+    <div className="flex min-h-[20vh] items-center justify-center">
       <span className="font-mono  text-accent text-xl">
         // {message || "No data found"}
       </span>
