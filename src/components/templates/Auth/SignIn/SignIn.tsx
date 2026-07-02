@@ -31,7 +31,12 @@ function SignIn() {
           onSubmit={(values: LoginDTO, { resetForm }) => {
             login.mutate(values, {
               onSuccess: (data) => {
-                localStorage.setItem('token' , data)
+                  const auth = {
+                      token: data,
+                      expiresAt: Date.now() + 59 * 60 * 1000, 
+                    };
+
+                  localStorage.setItem("auth", JSON.stringify(auth));
                 resetForm();
                 showSuccess("Login successfully");
                 navigate('/Admin')
