@@ -98,12 +98,15 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
                     <p className="text-[14px] md:text-lg break-all font-mono group-hover:text-primary transition-colors">{project.demoLink}</p>
                 </Link>
                 {project.githubLink.map((link)=>(
-                <Link to={link} target="_blank" rel="noreferrer"
+                  link.split(',').map((item)=>(
+                  <Link to={item} target="_blank" rel="noreferrer" key={link}
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
-                    <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">source code</p>
-                    <p className="text-[14px] md:text-lg break-all font-mono group-hover:text-primary transition-colors">{link}</p>
+                    <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2" key={item}>source code</p>
+                    <p className="text-[14px] md:text-lg break-all font-mono group-hover:text-primary transition-colors">{item}</p>
                 </Link>
+                  ))
+    
                 ))}
             </div>
           </aside>
