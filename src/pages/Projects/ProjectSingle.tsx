@@ -8,8 +8,8 @@ function ProjectSingle() {
   const params = useParams();
   const id = String(params.id)
   const {data:project , isError , isLoading} = useGetProjectById(id)
-      if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-  if (isError) return <p className="font-mono text-center text-primary">// error fetching project</p>;
+      if (isLoading) return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
+  if (isError) return <p className="font-mono text-center text-primary mt-20">// error fetching project</p>;
   return (
     <>
         <Helmet>

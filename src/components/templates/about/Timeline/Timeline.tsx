@@ -7,10 +7,10 @@ const Timeline: React.FC = () => {
 
 
   if (isLoading)
-    return <p className="font-mono text-center text-primary">// loading...</p>;
+    return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
   if (isError)
     return (
-      <p className="font-mono text-center text-primary">
+      <p className="font-mono text-center text-primary mt-20">
         // error fetching timelines
       </p>
     );

@@ -5,8 +5,8 @@ import { CertificateDTO } from "../../types/certificate";
 
 function Certificates() {
   const {data:Certificates , isError , isLoading} = useGetAllCertificate();
-    if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-    if (isError) return <p className="font-mono text-center text-primary">// error fetching certificates</p>;
+    if (isLoading) return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
+    if (isError) return <p className="font-mono text-center text-primary mt-20">// error fetching certificates</p>;
   return (
     <>
     <Helmet>

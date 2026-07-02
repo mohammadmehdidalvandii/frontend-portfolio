@@ -6,8 +6,8 @@ import { ProjectDTO } from "../../types/project";
 function Projects() {
     const {data:projects , isError , isLoading} = useGetAllProject();
   
-      if (isLoading) return <p className="font-mono text-center text-primary">// loading...</p>;
-    if (isError) return <p className="font-mono text-center text-primary">// error fetching projects</p>;
+      if (isLoading) return <p className="font-mono text-center text-primary mt-20">// loading...</p>;
+    if (isError) return <p className="font-mono text-center text-primary mt-20">// error fetching projects</p>;
   return (
     <>
       <Helmet>

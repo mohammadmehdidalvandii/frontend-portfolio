@@ -9,7 +9,7 @@ function Content() {
         </p>
         <Link
           to="mailto:mhmdmehdidalvandi@gmail.com"
-          className="text-2xl font-bold hover:text-primary transition-colors"
+          className="text-xl md:text-2xl font-bold hover:text-primary transition-colors"
         >
           mhmdmehdidalvandi@gmail.com
         </Link>
