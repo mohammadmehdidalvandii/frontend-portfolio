@@ -13,9 +13,10 @@ const ProjectCard:React.FC<ProjectDTO> =({name,title,stacks,image,shortDescripti
                 {` / ${name}`}
             </span>
             <span className="font-mono text-[12px] mt-4 md:mt-0 text-accent uppercase">
-                {stacks.map((item)=>(
-                    item
+                {stacks.slice(0.3).map((item)=>(
+                    item 
                 ))}
+                ,...
             </span>
         </div>
         <div className="w-full aspect-video bg-secondary/60 border border-input mb-10 overflow-hidden flex items-center justify-center">
