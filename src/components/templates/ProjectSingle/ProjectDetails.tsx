@@ -41,7 +41,7 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
               <h2 className="font-mono text-[14px] uppercase tracking-[0.3em] text-primary mb-6">
                 // overview
               </h2>
-              <p className="text-base leading-relaxed text-accent whitespace-pre-line">
+              <p className="text-base font-mono leading-relaxed text-accent whitespace-pre-line">
                 {project.longDescription}
               </p>
               {/* <p className="font-mono text-xs text-primary">
@@ -59,7 +59,7 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
                     <span className="font-mono text-[12px] text-primary pt-1 tabular-nums">
                       {index + 1}
                     </span>
-                    <span className="text-sm leading-relaxed text-accent">
+                    <span className="text-sm font-mono leading-relaxed text-accent">
                       {i}
                     </span>
                   </li>
@@ -86,13 +86,19 @@ const ProjectDetails:React.FC<{project:ProjectDTO}> = ({project}) => {
             </div>
             <div className="space-y-3">
                 <h2 className="font-mono text-[14px] uppercase tracking-[0.3em] text-primary mb-6">// links</h2>
-                <Link to='/' target="_blank" rel="noreferrer"
+                <Link to={project.demoLink} target="_blank" rel="noreferrer"
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
                     <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">Live Demo</p>
                     <p className="text-lg break-all group-hover:text-primary transition-colors">{project.demoLink}</p>
                 </Link>
-                <Link to='/' target="_blank" rel="noreferrer"
+                <Link to={project.githubLink} target="_blank" rel="noreferrer"
+                className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
+                >
+                    <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">source code</p>
+                    <p className="text-lg break-all group-hover:text-primary transition-colors">{project.githubLink}</p>
+                </Link>
+                <Link to={project.githubLink} target="_blank" rel="noreferrer"
                 className="block border border-input p-4 hover:border-accent hover:bg-secondary/50 transition-colors group"
                 >
                     <p className="font-mono text-[12px] uppercase tracking-widest text-accent mb-2">source code</p>

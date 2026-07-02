@@ -12,7 +12,7 @@ function ProjectHome() {
      {!Projects ||  Projects.length === 0 ? (
         <p className="font-mono text-center text-primary">// no projects found</p>
       ) : (
-        Projects.map((project:ProjectDTO)=>(
+        Projects.slice(0 , 4).map((project:ProjectDTO)=>(
           <ProjectCard 
             key={project._id}
             _id={project._id}

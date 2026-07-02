@@ -164,8 +164,14 @@ const AddTimelineModel: React.FC = () => {
                 className="px-5 py-2 border border-input font-mono text-[12px] uppercase tracking-widest duration-300 cursor-pointer transition-all hover:border-destructive hover:text-destructive">
                   Cancel
                 </button>
-                <button type="submit" className="px-5 py-2 bg-primary text-white font-mono text-[12px] uppercase tracking-widest duration-300 cursor-pointer transition-all hover:bg-transparent hover:text-primary hover:border hover:border-primary">
-                  Save
+                <button 
+                  disabled={createTimeline.isPending}
+                type="submit" className="px-5 py-2 bg-primary text-white font-mono text-[12px] uppercase tracking-widest duration-300 cursor-pointer transition-all hover:bg-transparent hover:text-primary hover:border hover:border-primary">
+                  {createTimeline.isPending ? (
+                    <span className="animate-pulse">Saving...</span>
+                  ) : (
+                    "Save"
+                  )}
                 </button>
               </div>
             </form>

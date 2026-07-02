@@ -99,9 +99,14 @@ const FormContact: React.FC = () => {
           )}
           <button
             type="submit"
+            disabled={sendMessage.isPending}
             className="px-10 py-4 bg-foreground text-bg font-bold tracking-widest uppercase text-xs hover:bg-primary transition-colors"
           >
-            Secure Connection
+            {sendMessage.isPending ? (
+              <span className="animate-pulse">Sending message ...</span>
+            ):(
+             " Secure Connection"
+          )}
           </button>
         </form>
       )}

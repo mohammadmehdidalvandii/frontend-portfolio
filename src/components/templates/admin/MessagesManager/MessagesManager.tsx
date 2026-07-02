@@ -102,9 +102,9 @@ const MessagesManager: React.FC = () => {
                         </p>
                         <p className="text-[12px] text-accent mb-6">{selected.email}</p>
                         <h3 className="text-lg font-bold mb-4 tracking-tight">{selected.subject}</h3>
-                        <p className="text-sm text-accent leading-relaxed whitespace-pre-line">
+                        <textarea rows={10} className="text-sm text-accent leading-relaxed whitespace-pre-line">
                             {selected.message}
-                        </p>
+                        </textarea>
                         <div className="flex justify-between items-center mt-8">
                             <button onClick={() => setSelected(null)}
                                 className="font-mono text-[12px] uppercase tracking-widest text-accent hover:text-primary transition-colors">
