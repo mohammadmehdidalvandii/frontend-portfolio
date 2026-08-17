@@ -5,9 +5,14 @@ export function QueryProvider({children}:{children:React.ReactNode}):JSX.Element
     const [queryClient] = useState(()=>new QueryClient({
         defaultOptions:{
             queries:{
-                staleTime:0,
-                refetchOnWindowFocus:true,
+                staleTime: 5 * 60 * 1000, // 5min
+                gcTime: 10 * 60 * 1000,
+                retry:1,
+                refetchOnWindowFocus:false,
                 refetchOnMount:true,
+                refetchOnReconnect:true,
+            },
+            mutations:{
                 retry:1
             }
         }

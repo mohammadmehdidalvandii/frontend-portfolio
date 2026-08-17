@@ -13,6 +13,7 @@ export default defineConfig({
       open: true,
       gzipSize: true,
       brotliSize: true,
+      emitFile:true,
     }),
   ],
   resolve:{
@@ -33,8 +34,9 @@ export default defineConfig({
   },
   build:{
     target:'es2022',
-    sourcemap:true,
-    chunkSizeWarningLimit:800,
+    sourcemap:false,
+    chunkSizeWarningLimit:1000,
+    cssCodeSplit:true,
   rollupOptions: {
       output: {
         manualChunks(id) {
@@ -43,11 +45,12 @@ export default defineConfig({
           if (
             id.includes('/react/') ||
             id.includes('/react-dom/') ||
-            id.includes('/react-router-dom/')
+            id.includes('/react-router-dom/') ||
+            id.includes('/react-helmet-async/')
           ) {
             return 'react-vendor'
           }
-          if (id.includes('@radix-ui')) {
+          if (id.includes('/@radix-ui/')) {
             return 'radix-vendor'
           }
           if (id.includes('/formik/') || id.includes('/yup/')) {
@@ -63,6 +66,11 @@ export default defineConfig({
           if (id.includes('@tanstack/react-query')) {
             return 'query-vendor'
           }
+          if(id.includes('/axios/')|| id.includes('/class-variance-authority/') || id.includes('/clsx/') || id.includes('/tailwind-merge/')){
+            return 'utils-vendor'
+          }
+          
+          return 'vendor'
         },
       },
     }

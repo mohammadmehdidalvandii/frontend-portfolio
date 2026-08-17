@@ -7,16 +7,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminLayout from "@layouts/AdminLayout";
 import Loading from "@components/modules/Loading/Loading";
 
+const lazyPages = {
+   Index : lazy(()=>import('@pages/Index/Index')),
+   Projects : lazy(()=>import('@pages/Projects/Projects')),
+   ProjectSingle : lazy(()=>import('@pages/Projects/ProjectSingle')),
+   Certificates : lazy(()=>import('@pages/Certificates/Certificates')),
+   About  : lazy(()=>import('@pages/About/About')),
+   Contact : lazy(()=>import('@pages/Contact/Contact')),
+   Admin : lazy(()=>import('@pages/Admin/Admin')),
+   Login : lazy(()=>import('@pages/Login/Login')),
+   NotFound : lazy(()=>import('@pages/NotFound/NotFound')),
+}
 
-const Index = lazy(()=>import('@pages/Index/Index'));
-const Projects = lazy(()=>import('@pages/Projects/Projects'))
-const ProjectSingle = lazy(()=>import('@pages/Projects/ProjectSingle'));
-const Certificates = lazy(()=>import('@pages/Certificates/Certificates'));
-const About  = lazy(()=>import('@pages/About/About'));
-const Contact = lazy(()=>import('@pages/Contact/Contact'));
-const Admin = lazy(()=>import('@pages/Admin/Admin'));
-const Login = lazy(()=>import('@pages/Login/Login'));
-const NotFound = lazy(()=>import('@pages/NotFound/NotFound'));
 
 function App() {
   return (
@@ -27,20 +29,20 @@ function App() {
           <Suspense fallback={<Loading/>}>
             <Routes>
               {/* All route */}
-              <Route path="*" element={<NotFound/>} />
-              <Route path="/Login" element={<Login/>}/>
+              <Route path="*" element={<lazyPages.NotFound/>} />
+              <Route path="/Login" element={<lazyPages.Login/>}/>
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
-                <Route index element={<Index/>}/>
-                <Route path="projects" element={<Projects/>}/>
-                <Route path="projects/:id" element={<ProjectSingle/>}/>
-                <Route path="certificates" element={<Certificates/>}/>
-                <Route path="about" element={<About/>}/>
-                <Route path="contact" element={<Contact/>}/>
+                <Route index element={<lazyPages.Index/>}/>
+                <Route path="projects" element={<lazyPages.Projects/>}/>
+                <Route path="projects/:id" element={<lazyPages.ProjectSingle/>}/>
+                <Route path="certificates" element={<lazyPages.Certificates/>}/>
+                <Route path="about" element={<lazyPages.About/>}/>
+                <Route path="contact" element={<lazyPages.Contact/>}/>
               </Route>
               {/* Admin Layout */}
               <Route path="/admin" element={<AdminLayout/>}>
-                <Route index element={<Admin/>}/>
+                <Route index element={<lazyPages.Admin/>}/>
               </Route>
             </Routes>
           </Suspense>
