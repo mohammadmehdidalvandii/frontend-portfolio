@@ -6,9 +6,11 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminLayout from "@layouts/AdminLayout";
 import Loading from "@components/modules/Loading/Loading";
+import Index from '@pages/Index/Index'
+
+
 
 const lazyPages = {
-   Index : lazy(()=>import('@pages/Index/Index')),
    Projects : lazy(()=>import('@pages/Projects/Projects')),
    ProjectSingle : lazy(()=>import('@pages/Projects/ProjectSingle')),
    Certificates : lazy(()=>import('@pages/Certificates/Certificates')),
@@ -33,7 +35,7 @@ function App() {
               <Route path="/Login" element={<lazyPages.Login/>}/>
               {/* Main page */}
               <Route path="/" element={<MainLayout />}>
-                <Route index element={<lazyPages.Index/>}/>
+                <Route index element={<Index/>}/>
                 <Route path="projects" element={<lazyPages.Projects/>}/>
                 <Route path="projects/:id" element={<lazyPages.ProjectSingle/>}/>
                 <Route path="certificates" element={<lazyPages.Certificates/>}/>
